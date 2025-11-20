@@ -8,9 +8,9 @@ package com.mycompany.proyectofinalpoo12eq02;
  *
  * @author faann
  */
-public class menuNoRegistrado
-{
-   print("Cine-TICs \n Trayendo historias especiales para personas especiales""); //un eslogan temporal :O
-  
+public class MenuClienteNoRegistrado{
+        public static void mostrarMenu() {
+   System.out.println("Cine-TICs \n Trayendo historias especiales para personas especiales"); //un eslogan temporal :O
+        }
 }
     
