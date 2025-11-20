@@ -9,5 +9,7 @@ package com.mycompany.proyectofinalpoo12eq02;
  * @author faann
  */
 public class ClasePrueba {
+    int dinero 0;
     
 }
+
