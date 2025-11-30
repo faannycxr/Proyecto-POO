@@ -27,7 +27,7 @@ public class PeliculasPrecargadas {
             "Emma Tammi",
             110,
             actores1,
-            "Un guardia de seguridad descubre que los animatrónicos están vivos."
+            "Un guardia de seguridad descubre que los animatonicos estan vivos."
         );
         listaPeliculas.add(p1);
 
@@ -46,7 +46,7 @@ public class PeliculasPrecargadas {
             "Hermanas Wachowski",
             136,
             actores2,
-            "Un hacker descubre que el mundo es una simulación controlada por máquinas."
+            "Un hacker descubre que el mundo es una simulacion controlada por maquinas."
         );
         listaPeliculas.add(p2);
 
@@ -65,7 +65,7 @@ public class PeliculasPrecargadas {
             "Shawn Levy",
             128,
             actores3,
-            "Deadpool une fuerzas con Wolverine en una misión que altera el multiverso."
+            "Deadpool une fuerzas con Wolverine en una mision que altera el multiverso."
         );
         listaPeliculas.add(p3);
 
@@ -84,7 +84,7 @@ public class PeliculasPrecargadas {
             "Christopher Nolan",
             180,
             actores4,
-            "La historia del creador de la bomba atómica y el Proyecto Manhattan."
+            "La historia del creador de la bomba atomica y el Proyecto Manhattan."
         );
         listaPeliculas.add(p4);
 
@@ -116,7 +116,7 @@ public class PeliculasPrecargadas {
         actores6.add("Jason Momoa");
 
         Pelicula p6 = new Pelicula(
-            "Rápidos y Furiosos 10",
+            "Rapidos y Furiosos 10",
             "B15",
             "Louis Leterrier",
             141,
@@ -140,7 +140,7 @@ public class PeliculasPrecargadas {
             "Aaron Horvath",
             92,
             actores7,
-            "Mario y Luigi deben salvar el Reino Champiñón del malvado Bowser."
+            "Mario y Luigi deben salvar el Reino Champiñon del malvado Bowser."
         );
         listaPeliculas.add(p7);
 
@@ -158,24 +158,24 @@ public class PeliculasPrecargadas {
             "Adam Wingard",
             115,
             actores8,
-            "Godzilla y Kong deben enfrentar juntos a un nuevo enemigo titánico."
+            "Godzilla y Kong deben enfrentar juntos a un nuevo enemigo titanico."
         );
         listaPeliculas.add(p8);
 
 
         // ======================================================
-        // 9. Hércules (versión moderna o 2014)
+        // 9. Hércules (version moderna o 2014)
         // ======================================================
         ArrayList<String> actores9 = new ArrayList<>();
         actores9.add("Dwayne Johnson");
 
         Pelicula p9 = new Pelicula(
-            "Hércules",
+            "Hercules",
             "B",
             "Brett Ratner",
             99,
             actores9,
-            "Hércules lucha por redimirse mientras lidera un grupo de mercenarios."
+            "Hercules lucha por redimirse mientras lidera un grupo de mercenarios."
         );
         listaPeliculas.add(p9);
 
@@ -198,14 +198,14 @@ public class PeliculasPrecargadas {
 
 
         // ======================================================
-        // 11. El Rey León: Mufasa
+        // 11. El Rey Leon: Mufasa
         // ======================================================
         ArrayList<String> actores11 = new ArrayList<>();
         actores11.add("Aaron Pierre");
         actores11.add("Kelvin Harrison Jr.");
 
         Pelicula p11 = new Pelicula(
-            "El Rey León: Mufasa",
+            "El Rey Leon: Mufasa",
             "A",
             "Barry Jenkins",
             120,
@@ -216,19 +216,19 @@ public class PeliculasPrecargadas {
 
 
         // ======================================================
-        // 12. El Rey León
+        // 12. El Rey Leon
         // ======================================================
         ArrayList<String> actores12 = new ArrayList<>();
         actores12.add("James Earl Jones");
         actores12.add("Donald Glover");
 
         Pelicula p12 = new Pelicula(
-            "El Rey León",
+            "El Rey Leon",
             "A",
             "Jon Favreau",
             118,
             actores12,
-            "Simba lucha por reclamar su lugar legítimo como rey de la sabana."
+            "Simba lucha por reclamar su lugar legitimo como rey de la sabana."
         );
         listaPeliculas.add(p12);
 
@@ -243,12 +243,88 @@ public class PeliculasPrecargadas {
         Pelicula p13 = new Pelicula(
             "Alien Romulus",
             "B15",
-            "Fede Álvarez",
+            "Fede Alvarez",
             120,
             actores13,
-            "Un grupo de jóvenes colonos enfrenta el horror de una nueva criatura xenomorfa."
+            "Un grupo de jovenes colonos enfrenta el horror de una nueva criatura xenomorfa."
         );
         listaPeliculas.add(p13);
+        
+        // ======================================================
+        // 14. Superman
+        // ======================================================
+        ArrayList<String> actores14 = new ArrayList<>();
+        actores14.add("David Corenswet");
+        actores14.add("Rachel Brosnahan");
+        actores14.add("Nicholas Hoult");
+
+        Pelicula p14 = new Pelicula(
+            "Superman (2025)",
+            "B",
+            "James Gunn",
+            125,
+            actores14,
+            "Clark Kent inicia su vida como Superman mientras intenta equilibrar su identidad humana y heroica."
+        );
+        listaPeliculas.add(p14);
+
+        // ======================================================
+        // 15. Jurassic World Rebirth
+        // ======================================================
+
+        ArrayList<String> actores15 = new ArrayList<>();
+        actores15.add("Chris Pratt");
+        actores15.add("Bryce Dallas Howard");
+        actores15.add("Mahershala Ali");
+
+        Pelicula p15 = new Pelicula(
+            "Jurassic World: Rebirth",
+            "B",
+            "Gareth Edwards",
+            140,
+            actores15,
+            "Una nueva era comienza cuando la humanidad intenta coexistir con dinosaurios en libertad."
+        );
+        listaPeliculas.add(p15);
+
+        // ======================================================
+        // 16. Mision Imposible
+        // ======================================================
+
+        ArrayList<String> actores16 = new ArrayList<>();
+        actores16.add("Tom Cruise");
+        actores16.add("Hayley Atwell");
+        actores16.add("Rebecca Ferguson");
+
+        Pelicula p16 = new Pelicula(
+            "Mission: Impossible - Dead Reckoning Part Two",
+            "B15",
+            "Christopher McQuarrie",
+            156,
+            actores16,
+            "Ethan Hunt enfrenta la mision mas peligrosa de su carrera para detener una amenaza global definitiva."
+        );
+        listaPeliculas.add(p16);
+
+
+        // ======================================================
+        // 17. The End of Evangelion
+        // ======================================================
+        ArrayList<String> actores17 = new ArrayList<>();
+        actores17.add("Megumi Ogata");
+        actores17.add("Megumi Hayashibara");
+        actores17.add("Yuko Miyamura");
+
+        Pelicula p17 = new Pelicula(
+            "The End of Evangelion",
+            "+16",
+            "Hideaki Anno",
+            87,
+            actores17,
+            "La confrontacion final entre NERV y SEELE mientras Shinji enfrenta el destino de la humanidad."
+        );
+        listaPeliculas.add(p17);
+
 
     }
 

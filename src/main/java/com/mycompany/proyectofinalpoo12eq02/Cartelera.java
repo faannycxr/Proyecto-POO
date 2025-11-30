@@ -49,10 +49,10 @@ public class Cartelera {
 
     public void imprimirCartelera() {
         System.out.println("=========================================");
-        System.out.println("PELÍCULA: " + pelicula.getNombrePelicula());
-        System.out.println("Clasificación: " + pelicula.getClasificacion());
+        System.out.println("PELICULA: " + pelicula.getNombrePelicula());
+        System.out.println("Clasificacion: " + pelicula.getClasificacion());
         System.out.println("Director: " + pelicula.getDirector());
-        System.out.println("Duración: " + pelicula.getDuracion() + " min");
+        System.out.println("Duracion: " + pelicula.getDuracion() + " min");
         System.out.println("Actores: " + pelicula.getActores());
         System.out.println("Sinopsis: " + pelicula.getSinopsis());
         System.out.println("Horario: " + horario);

@@ -9,7 +9,6 @@ public class ProyectoFinalPOO12EQ02 {
         cambiarPagina.Carga();
         cambiarPagina.saltoPagina();        
 
-        MenuClienteNoRegistrado.mostrarMenu();
         MenuClienteNoRegistrado.MenuInicial();
 
     }

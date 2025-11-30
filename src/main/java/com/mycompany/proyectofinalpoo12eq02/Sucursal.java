@@ -1,53 +1,86 @@
 package com.mycompany.proyectofinalpoo12eq02;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class Sucursal {
 
-    private Sucursal cu;
-    private Sucursal universidad;
-    private Sucursal carso;
-    private Sucursal xochimilco;
-    private Sucursal polanco;
+    private final String nombre;
+    private final List<Cartelera> cartelera = new ArrayList<>();
+    private final HashMap<String, Integer> stockProductos = new HashMap<>();
 
-    public Sucursal() {
-        cu = new Sucursal("CU");
-        universidad = new Sucursal("Universidad");
-        carso = new Sucursal("Carso");
-        xochimilco = new Sucursal("Xochimilco");
-        polanco = new Sucursal("Polanco");
+    private final List<producto> listaDeObjetosProducto = new ArrayList<>();
+
+    public Sucursal(String nombre) {
+        this.nombre = nombre;
     }
 
-    // ============================
-    // MÉTODO PRINCIPAL
-    // Guarda la cartelera donde corresponde
-    // ============================
-    public void agregarCartelera(Cartelera c) {
-        String suc = c.getSucursal();
+    public String getNombre() {
+        return nombre;
+    }
 
-        switch (suc) {
-            case "CU":
-                cu.agregarCartelera(c);
-                break;
-            case "Universidad":
-                universidad.agregarCartelera(c);
-                break;
-            case "Carso":
-                carso.agregarCartelera(c);
-                break;
-            case "Xochimilco":
-                xochimilco.agregarCartelera(c);
-                break;
-            case "Polanco":
-                polanco.agregarCartelera(c);
-                break;
-            default:
-                System.out.println("Sucursal no reconocida: " + suc);
+    public List<Cartelera> getCartelera() {
+        return cartelera;
+    }
+
+    public void agregarCartelera(Cartelera c) {
+        if (c != null) {
+            cartelera.add(c);
         }
     }
 
-    // Getters para acceder a cada sucursal
-    public Sucursal getCU() { return cu; }
-    public Sucursal getUniversidad() { return universidad; }
-    public Sucursal getCarso() { return carso; }
-    public Sucursal getXochimilco() { return xochimilco; }
-    public Sucursal getPolanco() { return polanco; }
+    public void imprimirCarteleras() {
+        if (cartelera.isEmpty()) {
+            System.out.println("No hay funciones disponibles en " + nombre + ".");
+            return;
+        }
+        System.out.println("Funciones en " + nombre + ":");
+        for (Cartelera c : cartelera) {
+            c.imprimirCartelera();
+        }
+    }
+
+    // Manejo de productos
+    public void agregarStock(String producto, int cantidad) {
+        if (producto == null || cantidad <= 0) return;
+        int actual = stockProductos.getOrDefault(producto, 0);
+        stockProductos.put(producto, actual + cantidad);
+    }
+
+    public boolean reducirStock(String producto, int cantidad) {
+        if (producto == null || cantidad <= 0) return false;
+
+        int actual = stockProductos.getOrDefault(producto, 0);
+        if (actual < cantidad) {
+            return false;
+        }
+        stockProductos.put(producto, actual - cantidad);
+        return true;
+    }
+
+    public int consultarStock(String producto) {
+        if (producto == null) return 0;
+        return stockProductos.getOrDefault(producto, 0);
+    }
+
+    public void imprimirStock() {
+        System.out.println("Stock de productos en " + nombre + ":");
+        if (stockProductos.isEmpty()) {
+            System.out.println("No hay productos registrados.");
+            return;
+        }
+        for (String p : stockProductos.keySet()) {
+            System.out.println(p + ": " + stockProductos.get(p));
+        }
+    }
+
+    public List<producto> getProducto() {
+        return listaDeObjetosProducto;
+    }
+
+    public int obtenerStockProducto(producto p) {
+        if (p == null) return 0;
+        return consultarStock(p.getNombreProducto());
+    }
 }

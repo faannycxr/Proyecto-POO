@@ -1,6 +1,7 @@
+
 package com.mycompany.proyectofinalpoo12eq02;
 
-public class ProgramaLealtad {
+class ProgramaLealtad {
 
     private boolean cuenta;
     private boolean registro;
@@ -14,7 +15,6 @@ public class ProgramaLealtad {
     private double dineroAcumulado;
 
     public ProgramaLealtad(boolean cuenta) {
-
         this.cuenta = cuenta; // viene de otra clase
         this.registro = false;
 
@@ -23,7 +23,6 @@ public class ProgramaLealtad {
         puntosRecompensa = 0.01; // nivel 0 → 1%
         nivelSuperior = 5;
         subirNivel = 1000;       // nivel 0 → requiere 1000
-
         dineroAcumulado = 0;
     }
 
@@ -37,21 +36,17 @@ public class ProgramaLealtad {
     }
 
     public void verificarPrograma() {
-
         if (!cuenta) {
             System.out.println("No tiene cuenta registrada.");
             return;
         }
-
         if (!registro) {
             System.out.println("No se registró en el programa de lealtad.");
             return;
         }
-
         mostrarPrograma();
     }
 
-    
     public void mostrarPrograma() {
         System.out.println("============================================");
         System.out.println("Programa de Lealtad");
@@ -64,7 +59,6 @@ public class ProgramaLealtad {
         System.out.println("============================================");
     }
 
-    
     public void registrarCompra(double totalPagado) {
         if (!cuenta) {
             System.out.println("No tiene cuenta registrada.");
@@ -136,5 +130,4 @@ public class ProgramaLealtad {
             System.out.println("Nivel máximo alcanzado. Cada $750 obtiene un producto gratis.");
         }
     }
-
 }
