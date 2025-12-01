@@ -1,14 +1,48 @@
 package com.mycompany.proyectofinalpoo12eq02;
 
-public class empleados extends datosPersonas {
+//Clase Empleado - Representa a un empleado de CINE-TICs.
+// Esta clase hereda todos sus atributos de datosPersonas
 
-    public empleados(String nombre, String apellidoPaterno, String apellidoMaterno,
-                     String direccion, String correo, String celular,
-                     String rfc, String numeroTrabajador,
-                     String tipoTrabajador, String sucursal, 
-                     String id, String contrasenia) {
+public class Empleado extends datosPersonas {
 
-        super(nombre, apellidoPaterno, apellidoMaterno, direccion, celular, correo,
-              rfc, numeroTrabajador, tipoTrabajador, sucursal, id, contrasenia);
+    /**
+     Constructor del empleado.
+     
+     * @param nombre
+     * @param apellidoPaterno
+     * @param apellidoMaterno
+     * @param direccion
+     * @param celular
+     * @param correo
+     * @param rfc
+     * @param numeroTrabajador
+     * @param tipoTrabajador
+     * @param sucursal
+     * @param id
+     * @param contrasenia
+     */
+    public Empleado(String nombre, String apellidoPaterno, String apellidoMaterno,
+                    String direccion, String celular, String correo,
+                    String rfc, String numeroTrabajador,
+                    String tipoTrabajador, String sucursal,
+                    String id, String contrasenia) {
+
+        super(nombre, apellidoPaterno, apellidoMaterno, direccion,
+              celular, correo, rfc, numeroTrabajador,
+              tipoTrabajador, sucursal, id, contrasenia);
+    }
+
+    /** Método para mostrar información completa del empleado. */
+    public void mostrarInfoEmpleado() {
+        System.out.println("\n----- Información del Empleado -----");
+        System.out.println("Nombre completo: " + nombre + " " + apellidoPaterno + " " + apellidoMaterno);
+        System.out.println("RFC: " + rfc);
+        System.out.println("Número trabajador: " + numeroTrabajador);
+        System.out.println("Tipo trabajador: " + tipoTrabajador);
+        System.out.println("Sucursal: " + sucursal);
+        System.out.println("Correo: " + correo);
+        System.out.println("Celular: " + celular);
+        System.out.println("ID de acceso: " + id);
     }
 }
+
