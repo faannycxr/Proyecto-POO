@@ -5,9 +5,7 @@ package com.mycompany.proyectofinalpoo12eq02;
 
 public class Empleado extends datosPersonas {
 
-    /**
-     Constructor del empleado.
-     
+    /* * Constructor del empleado, reutilizando por completo la estructura de la superclase datosPersonas. Por tanto, los parámetros a utilizar son: 
      * @param nombre
      * @param apellidoPaterno
      * @param apellidoMaterno
@@ -21,12 +19,9 @@ public class Empleado extends datosPersonas {
      * @param id
      * @param contrasenia
      */
-    public Empleado(String nombre, String apellidoPaterno, String apellidoMaterno,
-                    String direccion, String celular, String correo,
-                    String rfc, String numeroTrabajador,
-                    String tipoTrabajador, String sucursal,
-                    String id, String contrasenia) {
-
+    public Empleado(String nombre, String apellidoPaterno, String apellidoMaterno, String direccion, String celular, String correo,
+                    String rfc, String numeroTrabajador, String tipoTrabajador, String sucursal,  String id, String contrasenia) {
+    //Constructor
         super(nombre, apellidoPaterno, apellidoMaterno, direccion,
               celular, correo, rfc, numeroTrabajador,
               tipoTrabajador, sucursal, id, contrasenia);
@@ -34,10 +29,10 @@ public class Empleado extends datosPersonas {
 
     /** Método para mostrar información completa del empleado. */
     public void mostrarInfoEmpleado() {
-        System.out.println("\n----- Información del Empleado -----");
+        System.out.println("\n----- Informacion del Empleado -----");
         System.out.println("Nombre completo: " + nombre + " " + apellidoPaterno + " " + apellidoMaterno);
         System.out.println("RFC: " + rfc);
-        System.out.println("Número trabajador: " + numeroTrabajador);
+        System.out.println("Numero trabajador: " + numeroTrabajador);
         System.out.println("Tipo trabajador: " + tipoTrabajador);
         System.out.println("Sucursal: " + sucursal);
         System.out.println("Correo: " + correo);
@@ -45,4 +40,5 @@ public class Empleado extends datosPersonas {
         System.out.println("ID de acceso: " + id);
     }
 }
+
 
