@@ -3,7 +3,7 @@ package com.mycompany.proyectofinalpoo12eq02;
 //Clase Empleado - Representa a un empleado de CINE-TICs.
 // Esta clase hereda todos sus atributos de datosPersonas
 
-public class Empleado extends datosPersonas {
+public class empleados extends datosPersonas {
 
     /* * Constructor del empleado, reutilizando por completo la estructura de la superclase datosPersonas. Por tanto, los parámetros a utilizar son: 
      * @param nombre
@@ -19,7 +19,7 @@ public class Empleado extends datosPersonas {
      * @param id
      * @param contrasenia
      */
-    public Empleado(String nombre, String apellidoPaterno, String apellidoMaterno, String direccion, String celular, String correo,
+    public empleados(String nombre, String apellidoPaterno, String apellidoMaterno, String direccion, String celular, String correo,
                     String rfc, String numeroTrabajador, String tipoTrabajador, String sucursal,  String id, String contrasenia) {
     //Constructor
         super(nombre, apellidoPaterno, apellidoMaterno, direccion,

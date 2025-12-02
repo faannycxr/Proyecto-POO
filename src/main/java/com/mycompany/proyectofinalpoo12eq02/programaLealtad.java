@@ -1,7 +1,7 @@
 
 package com.mycompany.proyectofinalpoo12eq02;
 
-class ProgramaLealtad {
+class programaLealtad {
 
     private boolean cuenta;
     private boolean registro;
@@ -14,7 +14,7 @@ class ProgramaLealtad {
 
     private double dineroAcumulado;
 
-    public ProgramaLealtad(boolean cuenta) {
+    public programaLealtad(boolean cuenta) {
         this.cuenta = cuenta; // viene de otra clase
         this.registro = false;
 
