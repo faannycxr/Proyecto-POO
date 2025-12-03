@@ -17,7 +17,7 @@ public class MenuClienteNoRegistrado {
             carteleraCargada = true;
         }
     }
-
+    
     public static void mostrarEslogan() {
         System.out.println("Cine-TICs");
         System.out.println("Trayendo historias especiales para personas especiales");
