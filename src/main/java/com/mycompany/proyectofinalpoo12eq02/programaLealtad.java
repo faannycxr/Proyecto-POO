@@ -1,7 +1,6 @@
-
 package com.mycompany.proyectofinalpoo12eq02;
 
-class programaLealtad {
+public class programaLealtad {
 
     private boolean cuenta;
     private boolean registro;
@@ -15,14 +14,14 @@ class programaLealtad {
     private double dineroAcumulado;
 
     public programaLealtad(boolean cuenta) {
-        this.cuenta = cuenta; // viene de otra clase
+        this.cuenta = cuenta;
         this.registro = false;
 
         puntosTotal = 0;
         nivel = 0;
-        puntosRecompensa = 0.01; // nivel 0 → 1%
+        puntosRecompensa = 0.01;
         nivelSuperior = 5;
-        subirNivel = 1000;       // nivel 0 → requiere 1000
+        subirNivel = 1000;
         dineroAcumulado = 0;
     }
 
@@ -41,7 +40,7 @@ class programaLealtad {
             return;
         }
         if (!registro) {
-            System.out.println("No se registró en el programa de lealtad.");
+            System.out.println("No se registro en el programa de lealtad.");
             return;
         }
         mostrarPrograma();
@@ -55,7 +54,7 @@ class programaLealtad {
         System.out.println("Nivel actual: " + nivel);
         System.out.println("Porcentaje de recompensa: " + (puntosRecompensa * 100) + "%");
         System.out.println("Dinero faltante para subir: $" + subirNivel);
-        System.out.println("Próximo nivel: " + nivelSuperior);
+        System.out.println("Proximo nivel: " + nivelSuperior);
         System.out.println("============================================");
     }
 
@@ -69,20 +68,15 @@ class programaLealtad {
             return;
         }
 
-        // Acumular dinero para subir de nivel
         dineroAcumulado += totalPagado;
 
-        // Calcular puntos obtenidos
         double puntosGanados = totalPagado * puntosRecompensa;
         puntosTotal += puntosGanados;
 
-        // Actualizar el nivel si toca
         actualizarNivel();
     }
 
     private void actualizarNivel() {
-
-        // NIVEL 0 → 5
         if (nivel < 5) {
             nivelSuperior = 5;
             subirNivel = 1000 - dineroAcumulado;
@@ -95,7 +89,6 @@ class programaLealtad {
             return;
         }
 
-        // NIVEL 5 → 10
         if (nivel >= 5 && nivel < 10) {
             nivelSuperior = 10;
             subirNivel = 1200 - dineroAcumulado;
@@ -108,7 +101,6 @@ class programaLealtad {
             return;
         }
 
-        // NIVEL 10 → 15
         if (nivel >= 10 && nivel < 15) {
             nivelSuperior = 15;
             subirNivel = 1350 - dineroAcumulado;
@@ -121,13 +113,63 @@ class programaLealtad {
             return;
         }
 
-        // NIVEL 15-
         if (nivel == 15) {
             nivelSuperior = 15;
             subirNivel = 0;
             puntosRecompensa = 0.16;
 
-            System.out.println("Nivel máximo alcanzado. Cada $750 obtiene un producto gratis.");
+            System.out.println("Nivel maximo alcanzado. Cada $750 obtiene un producto gratis.");
         }
+    }
+
+    //getters
+    public static boolean getCuenta(programaLealtad p) { 
+        return p.cuenta; 
+    }
+    public static boolean getRegistro(programaLealtad p) { 
+        return p.registro; 
+    }
+    public static double getPuntosTotal(programaLealtad p) { 
+        return p.puntosTotal; 
+    }
+    public static int getNivel(programaLealtad p) { 
+        return p.nivel; 
+    }
+    public static double getPuntosRecompensa(programaLealtad p) { 
+        return p.puntosRecompensa; 
+    }
+    public static double getSubirNivel(programaLealtad p) { 
+        return p.subirNivel; 
+    }
+    public static int getNivelSuperior(programaLealtad p) { 
+        return p.nivelSuperior; 
+    }
+    public static double getDineroAcumulado(programaLealtad p) { 
+        return p.dineroAcumulado; 
+    }
+
+    //setters
+    public static void setCuenta(programaLealtad p, boolean valor) { 
+        p.cuenta = valor; 
+    }
+    public static void setRegistro(programaLealtad p, boolean valor) { 
+        p.registro = valor; 
+    }
+    public static void setPuntosTotal(programaLealtad p, double valor) { 
+        p.puntosTotal = valor; }
+    public static void setNivel(programaLealtad p, int valor) { 
+        p.nivel = valor; 
+    }
+    public static void setPuntosRecompensa(programaLealtad p, double valor) { 
+        p.puntosRecompensa = valor; 
+    }
+    public static void setSubirNivel(programaLealtad p, double valor) { 
+        p.subirNivel = valor; 
+    }
+    public static void setNivelSuperior(programaLealtad p, int valor) { 
+        p.nivelSuperior = valor; 
+    }
+    public static void setDineroAcumulado(programaLealtad p, double valor) { 
+        p.dineroAcumulado = valor; 
     }
 }

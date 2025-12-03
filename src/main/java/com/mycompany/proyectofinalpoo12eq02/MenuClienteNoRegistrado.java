@@ -7,7 +7,7 @@ public class MenuClienteNoRegistrado {
     private static Sucursales sucursales = new Sucursales();
     private static Sucursal sucursalActual = sucursales.getCU();
     private static carteleraPrecargada carteleraBase = new carteleraPrecargada();
-    private static boolean carteleraCargada = false; // ← evita duplicados
+    private static boolean carteleraCargada = false;
 
     public static void cargarCarteleraEnSucursales() {
         if (!carteleraCargada) {
@@ -37,12 +37,19 @@ public class MenuClienteNoRegistrado {
             mostrarMenu();
             System.out.print("Selecciona una opcion: ");
 
-            String entrada = sc.nextLine().trim();
-            int opMenu = Integer.parseInt(entrada);
+            int opMenu = sc.nextInt();
+            sc.nextLine();
 
             switch (opMenu) {
                 case 1:
-                    System.out.println("Iniciando sesion...");
+                    inicioSesion login = new inicioSesion();
+                    boolean acceso = login.iniciar();
+
+                    if (acceso) {
+                        System.out.println("Inicio de sesion exitoso");
+                    } else {
+                        System.out.println("ID o contrasena incorrectos");
+                    }
                     break;
 
                 case 2:
@@ -72,6 +79,13 @@ public class MenuClienteNoRegistrado {
         while (true) {
             try {
                 System.out.println("\nSucursal actual: " + sucursalActual.getNombre());
+                if (!inicioSesion.isSesionIniciada()) {
+                    System.out.println("Usted ha iniciado como invitado");
+                } else {
+                    clientes c = inicioSesion.getClienteActual();
+                    System.out.println("Bienvenido " + c.getNombre());
+                }
+
                 System.out.println("1. Ver cartelera");
                 System.out.println("2. Buscar Pelicula");
                 System.out.println("3. Cambiar sucursal");
@@ -85,10 +99,11 @@ public class MenuClienteNoRegistrado {
                 System.out.println("11. Salir");
                 System.out.print("Selecciona una opcion: ");
 
-                String entrada = sc.nextLine().trim();
-                int op = Integer.parseInt(entrada);
+                int op = sc.nextInt();
+                sc.nextLine(); // limpiar
 
                 switch (op) {
+
                     case 1:
                         System.out.println("\nCARTELERA EN " + sucursalActual.getNombre());
                         sucursalActual.imprimirCarteleras();
@@ -101,28 +116,62 @@ public class MenuClienteNoRegistrado {
                     case 3:
                         sucursalActual = CambiarSucursal.cambiarSucursal(sucursales, sucursalActual);
                         break;
-                        
+
                     case 4:
+                        try {
+                            if (!inicioSesion.isSesionIniciada()) {
+                                inicioSesion login = new inicioSesion();
+                                login.iniciar();
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Usted ya inicio sesion");
+                        }
                         break;
-                    
+
                     case 5:
                         buscarProducto.buscarProducto(sucursalActual);
                         break;
+
                     case 6:
                         break;
-                        
+
                     case 7:
-                        break; 
-                        
+                        modificarDatosCliente.modificarClienteSesion();
+                        break;
+
                     case 8:
-                        break;
-                    
-                    case 9:
-                        break;
-                    
-                    case 10:
-                        break;
+                        registroCliente.registrarNuevoCliente();
                         
+                    case 9:
+                        if (!inicioSesion.isSesionIniciada()) {
+                            System.out.println("Solo puede ver sus compras si inicio sesion");
+                        }
+                        break;
+
+                    case 10:
+                        try {
+                            if (!inicioSesion.isSesionIniciada()) {
+                                System.out.println("Solo puede ver sus puntos si inicio sesion");
+                            } else {
+                                clientes c = inicioSesion.getClienteActual();
+                                if (!c.isSocioLealtad()) {
+                                    System.out.println("No esta registrado en el programa de lealtad.");
+                                    System.out.println("1. Si");
+                                    System.out.println("2. No");
+
+                                    int r = sc.nextInt();
+                                    sc.nextLine();
+
+                                    if (r == 1) c.activarLealtad();
+                                } else {
+                                    c.verificarPrograma();
+                                }
+                            }
+                        } catch (Exception e) {
+                            System.out.println("Error al acceder al programa de lealtad.");
+                        }
+                        break;
+
                     case 11:
                         System.out.println("Regresando al menu principal...");
                         return;
@@ -131,9 +180,9 @@ public class MenuClienteNoRegistrado {
                         System.out.println("Opcion no implementada.");
                         break;
                 }
-
-            } catch (NumberFormatException e) {
+            } catch (Exception e) {
                 System.out.println("Entrada invalida");
+                sc.nextLine(); // limpiar error
             }
         }
     }
