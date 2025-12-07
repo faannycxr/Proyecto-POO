@@ -8,22 +8,23 @@ public class datosPersonas {
     protected String direccion;
     protected String celular;
     protected String correo;
-    
+
     // Campos exclusivos de empleados
     protected String rfc;
     protected String numeroTrabajador;
     protected String tipoTrabajador;
     protected String sucursal;
-    
+
     protected String id;
     protected String contrasenia;
 
     public datosPersonas() {
     }
 
-    public datosPersonas(String nombre, String apellidoPaterno, String apellidoMaterno, String direccion,
-                         String celular, String correo, String rfc, String numeroTrabajador,
-                         String tipoTrabajador, String sucursal, String id, String contrasenia) {
+    public datosPersonas(String nombre, String apellidoPaterno, String apellidoMaterno,
+                         String direccion, String celular, String correo,
+                         String rfc, String numeroTrabajador, String tipoTrabajador,
+                         String sucursal, String id, String contrasenia) {
 
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
@@ -41,9 +42,9 @@ public class datosPersonas {
         this.contrasenia = contrasenia;
     }
 
-        public String getNombre() {
+    public String getNombre() {
         return nombre;
-        }
+    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -136,5 +137,4 @@ public class datosPersonas {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-
-    }
+}

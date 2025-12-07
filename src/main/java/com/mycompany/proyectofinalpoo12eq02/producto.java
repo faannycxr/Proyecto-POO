@@ -13,7 +13,6 @@ public class producto {
     private int stockXochimilco;
     private int stockPolanco;
 
-    // Constructor completo
     public producto(String nombreProducto, int codigoProducto, int precio, String categoria,
                      int stockCU, int stockUni, int stockCarso, int stockXochimilco, int stockPolanco) {
 

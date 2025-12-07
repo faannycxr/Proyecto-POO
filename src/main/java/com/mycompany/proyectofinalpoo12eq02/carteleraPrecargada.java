@@ -1,6 +1,7 @@
 package com.mycompany.proyectofinalpoo12eq02;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class carteleraPrecargada {
 
@@ -366,4 +367,78 @@ public class carteleraPrecargada {
     public ArrayList<Cartelera> getListaCartelera() {
         return listaCartelera;
     }
+    
+    
+    public void agregarCartelera() {
+        Sucursal sucursalActual = MenuClienteNoRegistrado.getSucursalActual();
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("\nAGREGAR CARTELERA");
+
+        System.out.print("Nombre de la película: ");
+        String nombre = sc.nextLine();
+
+        Pelicula peli = buscarPelicula(nombre);
+        if (peli == null) {
+            System.out.println("No se puede crear cartelera porque la película no existe.");
+            return;
+        }
+
+        System.out.print("Horario: ");
+        String horario = sc.nextLine();
+
+        System.out.print("Número de sala: ");
+        String sala = sc.nextLine();
+
+        try {
+            listaCartelera.add(new Cartelera(peli, horario, sala, sucursalActual.getNombre()));
+            System.out.println("Cartelera agregada correctamente en sucursal: " + sucursalActual.getNombre());
+        } catch (Exception e) {
+            System.out.println("Error al agregar la cartelera.");
+        }
+    }
+
+        public void eliminarCartelera() {
+        Sucursal sucursalActual = MenuClienteNoRegistrado.getSucursalActual();
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("\nELIMINAR CARTELERA");
+
+        System.out.print("Nombre de la pelicula a eliminar: ");
+        String nombre = sc.nextLine();
+
+        System.out.print("Horario de la funcion: ");
+        String horario = sc.nextLine();
+
+        System.out.print("Numero de sala: ");
+        String sala = sc.nextLine();
+
+        Cartelera encontrada = null;
+
+        for (Cartelera c : listaCartelera) {
+            if (c.getPelicula().getNombrePelicula().equalsIgnoreCase(nombre)
+                    && c.getSucursal().equalsIgnoreCase(sucursalActual.getNombre())
+                    && c.getHorario().equalsIgnoreCase(horario)
+                    && c.getSala().equalsIgnoreCase(sala)) {
+                encontrada = c;
+                break;
+            }
+        }
+
+        if (encontrada == null) {
+            System.out.println("No se encontro una cartelera con esos datos en la sucursal " 
+                    + sucursalActual.getNombre());
+            return;
+        }
+
+        try {
+            listaCartelera.remove(encontrada);
+            System.out.println("Cartelera eliminada correctamente.");
+        } catch (Exception e) {
+            System.out.println("No se pudo eliminar la cartelera.");
+        }
 }
+
+}
+
+    

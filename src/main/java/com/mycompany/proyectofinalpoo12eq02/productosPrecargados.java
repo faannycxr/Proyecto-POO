@@ -199,4 +199,79 @@ public class productosPrecargados {
     public ArrayList<producto> getProductos() {
         return listaProductos;
     }
+
+
+public static void tablaProductos(productosPrecargados productosBD) {
+
+    String formato = "%-20s %-15s %-10s %-12s %-10s %-18s %-15s %-18s %-15s%n";
+
+    System.out.printf(formato,
+        "Nombre",
+        "Codigo",
+        "Precio",
+        "Categoria",
+        "Stock CU",
+        "Stock Uni",
+        "Stock Carso",
+        "Stock Xochimilco",
+        "Stock Polanco"
+    );
+
+    System.out.println("-----------------------------------------------------------------------------------------------------------------------------");
+
+    for (producto p : productosBD.getProductos()) {
+        System.out.printf(formato,
+            p.getNombreProducto(),
+            p.getCodigoProducto(),
+            "$" + p.getPrecio(),
+            p.getCategoria(),
+            p.getStockCU(),
+            p.getStockUni(),
+            p.getStockCarso(),
+            p.getStockXochimilco(),
+            p.getStockPolanco()
+        );
+    }
 }
+    public static void tablaStockSucursal(productosPrecargados productosBD, Sucursal sucursalActual) {
+
+        String formato = "%-20s %-15s %-10s %-12s %-10s%n";
+
+        String nombreSucursal = sucursalActual.getNombre().toLowerCase();
+
+        System.out.printf(formato,
+            "Nombre",
+            "Codigo",
+            "Precio",
+            "Categoria",
+            "Stock " + nombreSucursal
+        );
+
+        System.out.println("----------------------------------------------------------------------------");
+
+        for (producto p : productosBD.getProductos()) {
+
+            int stock = 0;
+
+            switch (nombreSucursal) {
+                case "cu": stock = p.getStockCU(); break;
+                case "uni": stock = p.getStockUni(); break;
+                case "carso": stock = p.getStockCarso(); break;
+                case "xochimilco": stock = p.getStockXochimilco(); break;
+                case "polanco": stock = p.getStockPolanco(); break;
+                default:
+                    System.out.println("Sucursal no valida.");
+                    return;
+            }
+
+            System.out.printf(formato,
+                p.getNombreProducto(),
+                p.getCodigoProducto(),
+                "$" + p.getPrecio(),
+                p.getCategoria(),
+                stock
+            );
+        }
+    }
+}
+

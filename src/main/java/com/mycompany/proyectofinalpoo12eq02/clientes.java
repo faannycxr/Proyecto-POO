@@ -1,15 +1,6 @@
 package com.mycompany.proyectofinalpoo12eq02;
 
-public class clientes {
-
-    private String nombre;
-    private String apellidoPaterno;
-    private String apellidoMaterno;
-    private String direccion;
-    private String telefono;
-    private String correo;
-    private String numeroCuenta;
-    private String contrasena;
+public class clientes extends datosPersonas {
 
     private boolean inscritoLealtad;
 
@@ -23,10 +14,10 @@ public class clientes {
             this.apellidoPaterno = apellidoPaterno;
             this.apellidoMaterno = apellidoMaterno;
             this.direccion = direccion;
-            this.telefono = telefono;
+            this.celular = telefono;
             this.correo = correo;
-            this.numeroCuenta = numeroCuenta;
-            this.contrasena = contrasena;
+            this.id = numeroCuenta;
+            this.contrasenia = contrasena;
             this.inscritoLealtad = inscritoLealtad;
         } catch (Exception e) {
             System.out.println("Error en constructor de clientes");
@@ -45,72 +36,12 @@ public class clientes {
         }
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getApellidoPaterno() {
-        return apellidoPaterno;
-    }
-
-    public String getApellidoMaterno() {
-        return apellidoMaterno;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public String getCorreo() {
-        return correo;
-    }
-
     public String getNumeroCuenta() {
-        return numeroCuenta;
+        return id;
     }
 
     public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setApellidoPaterno(String apellidoPaterno) {
-        this.apellidoPaterno = apellidoPaterno;
-    }
-
-    public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-    public String getId() {
-        return numeroCuenta;
-    }
-
-    public String getContrasenia() {
-        return contrasena;
+        return contrasenia;
     }
 
     public boolean isSocioLealtad() {

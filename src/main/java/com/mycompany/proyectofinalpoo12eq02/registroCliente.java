@@ -79,10 +79,7 @@ public class registroCliente {
 
             inicioSesion.setSesionIniciada(true);
 
-            // ************** CORRECCION IMPORTANTE **************
-            // Ya NO se accede a clienteActual directamente (era privado).
             inicioSesion.setClienteActual(clienteEnSesion);
-            // ****************************************************
 
             switch (op) {
                 case 1:

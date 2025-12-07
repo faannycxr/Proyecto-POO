@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.proyectofinalpoo12eq02;
 
 /**
@@ -31,11 +27,8 @@ public class Pelicula {
         this.sinopsis = sinopsis;
     }
 
-    // ===========================
-    //   Constructor vacío (opcional)
-    // ===========================
     public Pelicula() {
-        this.actores = new ArrayList<>(); // inicializar para evitar null
+        this.actores = new ArrayList<>();
     }
 
     

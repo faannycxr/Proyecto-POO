@@ -11,6 +11,12 @@ public class PeliculasPrecargadas {
         cargarPeliculas();
     }
 
+    public void agregarPelicula(Pelicula nueva) {
+        if (nueva != null) {
+            listaPeliculas.add(nueva);
+        }
+    }
+
     private void cargarPeliculas() {
 
         // ======================================================
@@ -146,7 +152,7 @@ public class PeliculasPrecargadas {
 
 
         // ======================================================
-        // 8. Godzilla vs Kong 2 (Godzilla x Kong: The New Empire)
+        // 8. Godzilla vs Kong 2
         // ======================================================
         ArrayList<String> actores8 = new ArrayList<>();
         actores8.add("Rebecca Hall");
@@ -164,7 +170,7 @@ public class PeliculasPrecargadas {
 
 
         // ======================================================
-        // 9. Hércules (version moderna o 2014)
+        // 9. Hércules
         // ======================================================
         ArrayList<String> actores9 = new ArrayList<>();
         actores9.add("Dwayne Johnson");
@@ -198,7 +204,7 @@ public class PeliculasPrecargadas {
 
 
         // ======================================================
-        // 11. El Rey Leon: Mufasa
+        // 11. El Rey León: Mufasa
         // ======================================================
         ArrayList<String> actores11 = new ArrayList<>();
         actores11.add("Aaron Pierre");
@@ -216,7 +222,7 @@ public class PeliculasPrecargadas {
 
 
         // ======================================================
-        // 12. El Rey Leon
+        // 12. El Rey León
         // ======================================================
         ArrayList<String> actores12 = new ArrayList<>();
         actores12.add("James Earl Jones");
@@ -249,7 +255,8 @@ public class PeliculasPrecargadas {
             "Un grupo de jovenes colonos enfrenta el horror de una nueva criatura xenomorfa."
         );
         listaPeliculas.add(p13);
-        
+
+
         // ======================================================
         // 14. Superman
         // ======================================================
@@ -268,10 +275,10 @@ public class PeliculasPrecargadas {
         );
         listaPeliculas.add(p14);
 
+
         // ======================================================
         // 15. Jurassic World Rebirth
         // ======================================================
-
         ArrayList<String> actores15 = new ArrayList<>();
         actores15.add("Chris Pratt");
         actores15.add("Bryce Dallas Howard");
@@ -287,10 +294,10 @@ public class PeliculasPrecargadas {
         );
         listaPeliculas.add(p15);
 
-        // ======================================================
-        // 16. Mision Imposible
-        // ======================================================
 
+        // ======================================================
+        // 16. Misión Imposible
+        // ======================================================
         ArrayList<String> actores16 = new ArrayList<>();
         actores16.add("Tom Cruise");
         actores16.add("Hayley Atwell");
@@ -325,11 +332,9 @@ public class PeliculasPrecargadas {
         );
         listaPeliculas.add(p17);
 
-
     }
 
     public ArrayList<Pelicula> getPeliculas() {
         return listaPeliculas;
     }
 }
-

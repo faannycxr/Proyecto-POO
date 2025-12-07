@@ -84,7 +84,7 @@ public class modificarDatosCliente {
                     case 5:
                         try {
                             System.out.print("Nuevo telefono: ");
-                            clienteMod.setTelefono(sc.nextLine());
+                            clienteMod.setCelular(sc.nextLine());
                             System.out.println("Telefono actualizado.");
                         } catch (Exception e) {
                             System.out.println("No se pudo modificar el telefono.");
@@ -104,14 +104,14 @@ public class modificarDatosCliente {
                     case 7:
                         try {
                             System.out.print("Nueva contrasena: ");
-                            clienteMod.setContrasena(sc.nextLine());
+                            clienteMod.setContrasenia(sc.nextLine());
                             System.out.println("Contrasena actualizada.");
                         } catch (Exception e) {
                             System.out.println("No se pudo modificar la contrasena.");
                         }
                         break;
 
-                    case 10:
+                    case 8:
                         try {
                             System.out.println("Modificar todo:");
 
@@ -128,13 +128,13 @@ public class modificarDatosCliente {
                             clienteMod.setDireccion(sc.nextLine());
 
                             System.out.print("Nuevo telefono: ");
-                            clienteMod.setTelefono(sc.nextLine());
+                            clienteMod.setCelular(sc.nextLine());
 
                             System.out.print("Nuevo correo: ");
                             clienteMod.setCorreo(sc.nextLine());
 
                             System.out.print("Nueva contrasena: ");
-                            clienteMod.setContrasena(sc.nextLine());
+                            clienteMod.setContrasenia(sc.nextLine());
 
                             System.out.println("Todos los datos han sido modificados.");
                         } catch (Exception e) {
@@ -142,7 +142,7 @@ public class modificarDatosCliente {
                         }
                         break;
 
-                    case 11:
+                    case 9:
                         try {
                             System.out.print("Seguro que desea borrar su cuenta? (si/no): ");
                             String conf = sc.nextLine();
@@ -164,7 +164,7 @@ public class modificarDatosCliente {
                         }
                         break;
 
-                    case 0:
+                    case 10:
                         System.out.println("Saliendo del menu de modificacion...");
                         break;
 
