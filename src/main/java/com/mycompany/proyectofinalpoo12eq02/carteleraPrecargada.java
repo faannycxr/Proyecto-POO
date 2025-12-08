@@ -1,3 +1,4 @@
+
 package com.mycompany.proyectofinalpoo12eq02;
 
 import java.util.ArrayList;
@@ -7,29 +8,26 @@ public class carteleraPrecargada {
 
     private ArrayList<Cartelera> listaCartelera;
     private PeliculasPrecargadas peliculasBase;
+    private salasPrecargadas salasBase;
 
     public carteleraPrecargada() {
         listaCartelera = new ArrayList<>();
         peliculasBase = new PeliculasPrecargadas();
+        salasBase = new salasPrecargadas();
         cargarCartelera();
     }
 
-      private Pelicula buscarPelicula(String nombre) 
-      {
-        for (Pelicula p : peliculasBase.getPeliculas()) 
-        {
-            if (p.getNombrePelicula().equalsIgnoreCase(nombre)) 
-            {
+    private Pelicula buscarPelicula(String nombre) {
+        for (Pelicula p : peliculasBase.getPeliculas()) {
+            if (p.getNombrePelicula().equalsIgnoreCase(nombre)) {
                 return p;
             }
         }
         System.out.println("PELICULA NO ENCONTRADA: " + nombre);
         return null;
     }
-      
-      
-    private void cargarCartelera() {
 
+    private void cargarCartelera() {
         // ============================
         // SUCURSAL CU
         // ============================
@@ -364,12 +362,39 @@ public class carteleraPrecargada {
 
     }
 
+
+    private void agregar(String sucursal, String nombrePeli, String horario, String sala) {
+
+        try {
+            Pelicula p = buscarPelicula(nombrePeli);
+            if (p == null) return;
+
+            salas salaEncontrada = salasBase.buscarSala(sucursal, sala);
+            if (salaEncontrada == null) {
+                System.out.println("ERROR: Sala " + sala + " no existe en " + sucursal);
+                return;
+            }
+
+            listaCartelera.add(new Cartelera(
+                p,
+                horario,
+                sala,
+                sucursal
+            ));
+
+            listaCartelera.get(listaCartelera.size() - 1).setCapacidad(salaEncontrada.getCapacidad());
+
+        } catch (Exception e) {
+            System.out.println("ERROR al cargar cartelera: " + nombrePeli);
+        }
+    }
+
     public ArrayList<Cartelera> getListaCartelera() {
         return listaCartelera;
     }
-    
-    
+
     public void agregarCartelera() {
+
         Sucursal sucursalActual = MenuClienteNoRegistrado.getSucursalActual();
         Scanner sc = new Scanner(System.in);
 
@@ -390,15 +415,33 @@ public class carteleraPrecargada {
         System.out.print("Número de sala: ");
         String sala = sc.nextLine();
 
+        salas salaEncontrada = salasBase.buscarSala(sucursalActual.getNombre(), sala);
+        if (salaEncontrada == null) {
+            System.out.println("ERROR: Esa sala no existe en esta sucursal.");
+            return;
+        }
+
         try {
-            listaCartelera.add(new Cartelera(peli, horario, sala, sucursalActual.getNombre()));
-            System.out.println("Cartelera agregada correctamente en sucursal: " + sucursalActual.getNombre());
+            Cartelera nueva = new Cartelera(
+                peli,
+                horario,
+                sala,
+                sucursalActual.getNombre()
+            );
+
+            nueva.setCapacidad(salaEncontrada.getCapacidad());
+
+            listaCartelera.add(nueva);
+
+            System.out.println("Cartelera agregada con capacidad: " + salaEncontrada.getCapacidad());
+
         } catch (Exception e) {
             System.out.println("Error al agregar la cartelera.");
         }
     }
 
-        public void eliminarCartelera() {
+    public void eliminarCartelera() {
+
         Sucursal sucursalActual = MenuClienteNoRegistrado.getSucursalActual();
         Scanner sc = new Scanner(System.in);
 
@@ -426,7 +469,7 @@ public class carteleraPrecargada {
         }
 
         if (encontrada == null) {
-            System.out.println("No se encontro una cartelera con esos datos en la sucursal " 
+            System.out.println("No se encontro una cartelera con esos datos en la sucursal "
                     + sucursalActual.getNombre());
             return;
         }
@@ -437,8 +480,7 @@ public class carteleraPrecargada {
         } catch (Exception e) {
             System.out.println("No se pudo eliminar la cartelera.");
         }
-}
-
+    }
 }
 
     

@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class BuscarPelicula {
 
-    public static void buscarPelicula(Sucursal sucursalActual) {
+    public static ventaResultado buscarPelicula(Sucursal sucursalActual) {
 
         Scanner sc = new Scanner(System.in);
         String nombreBuscado = "";
@@ -14,7 +14,7 @@ public class BuscarPelicula {
             nombreBuscado = sc.nextLine();
         } catch (Exception e) {
             System.out.println("Error al leer el nombre.");
-            return;
+            return null;
         }
 
         boolean encontrada = false;
@@ -33,12 +33,16 @@ public class BuscarPelicula {
             }
         } catch (Exception e) {
             System.out.println("Error al buscar la película.");
-            return;
+            return null;
         }
 
         if (encontrada) {
             System.out.println("Película encontrada:");
             resultado.imprimirCartelera();
+
+            ventas v = new ventas();
+            return v.compraBoleto(resultado);
+
         } else {
             System.out.println("No contamos con dicha película en este momento");
             System.out.println("Pero podemos ofrecerte estas funciones:");
@@ -52,5 +56,7 @@ public class BuscarPelicula {
                 System.out.println("Error al mostrar las películas disponibles.");
             }
         }
+
+        return null;
     }
 }

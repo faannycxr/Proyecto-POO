@@ -40,6 +40,10 @@ public class buscarProducto {
         if (encontrado) {
             System.out.println("Producto encontrado:");
             imprimirProducto(resultado, sucursalActual);
+
+            ventas v = new ventas();
+            v.comprarProducto(sucursalActual);
+
         } else {
             System.out.println("No contamos con ese producto en este momento.");
             System.out.println("Pero podemos ofrecerte estos productos:");
