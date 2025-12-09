@@ -15,11 +15,11 @@ public class ProyectoFinalPOO12EQ02 {
      * @param args the command line arguments
      */
     
-    private static final String CLIENTES_FILE = "src/cinetics/archivos/clientes/clientes.txt";
-    private static final String EMPLEADOS_FILE = "src/cinetics/archivos/empleados.txt";
-    private static final String GERENTES_FILE = "src/cinetics/archivos/gerentes.txt";
-    private static final String FUNCIONES_FILE = "src/cinetics/archivos/funciones.txt";
-    private static final String PRODUCTOS_FILE = "src/cinetics/archivos/productos.txt";
+    private static final String CLIENTES_FILE = "src/main/java/cinetics/archivos/clientes/clientes.txt";
+    private static final String EMPLEADOS_FILE = "src/main/java/cinetics/archivos/empleados.txt";
+    private static final String GERENTES_FILE = "src/main/java/cinetics/archivos/gerentes.txt";
+    private static final String FUNCIONES_FILE = "src/main/java/cinetics/archivos/funciones.txt";
+    private static final String PRODUCTOS_FILE = "src/main/java/cinetics/archivos/productos.txt";
     
     private int contTrabajadores = 1;
     private ArrayList<Sucursal> sucursales = new ArrayList<Sucursal>();
