@@ -418,7 +418,8 @@ public class Sucursal {
                 //creamos los boletos de adulto y los guardamos en la lista de boletos
                 for(int i = 0; i < boletosAdulto; i++){
                     asiento = i+1;    
-                    Boleto nuevoBoletoAdulto = new Boleto(sala.getNombre(), peliculaSeleccionada.getHora(), peliculaSeleccionada.getNombre(), String.valueOf(asiento), String.valueOf(precioAdulto));
+                    Boleto nuevoBoletoAdulto = new Boleto(sala.getNombre(), peliculaSeleccionada.getHora(), 
+                            peliculaSeleccionada.getNombre(), String.valueOf(asiento), String.valueOf(precioAdulto));
                     sala.actualizarLugares(asiento);
                     boletos.add(nuevoBoletoAdulto);
                     nuevoBoletoAdulto.setVenta(1);
@@ -428,7 +429,8 @@ public class Sucursal {
                 //creamos los boletos de niño y los guardamos en la lista de boletos
                 for(int j = 0; j < boletosNino; j++){
                     asiento = j+1;    
-                    Boleto nuevoBoletoNino = new Boleto(sala.getNombre(), peliculaSeleccionada.getHora(), peliculaSeleccionada.getNombre(), String.valueOf(asiento), String.valueOf(precioNino));
+                    Boleto nuevoBoletoNino = new Boleto(sala.getNombre(), peliculaSeleccionada.getHora(), 
+                            peliculaSeleccionada.getNombre(), String.valueOf(asiento), String.valueOf(precioNino));
                     sala.actualizarLugares(asiento);
                     nuevoBoletoNino.setVenta(1);
                     boletos.add(nuevoBoletoNino);
