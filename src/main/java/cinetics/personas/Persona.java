@@ -122,7 +122,7 @@ public class Persona {
                         if(salir.equals("s")){
                             return false;
                         } else if(salir.equals("n")){
-                            continue;
+                            break;
                         } 
                         break;
                     }catch(Exception e){
@@ -146,15 +146,15 @@ public class Persona {
                     + "los detalles de este programa");
             System.out.println("El sistema se divide en niveles los cuales iran aumentando a medida que realices compras. "
                     + "Cada nivel tiene un porcentaje de puntos y entre mas nivel tengas mas puntos puedes obtener");
-            System.out.println("Nivel 0-5: En este nivel recibes un 3% de puntos en tus compras, para aumentar un nivel "
+            System.out.println("Nivel 0-5: En este nivel recibes un 1% de puntos en tus compras, para aumentar un nivel "
                     + "deberas acumular compras por al menos $1000");
-            System.out.println("Nivel 5-10: En este nivel recibes un 7.5% de puntos en tus compras, para aumentar un nivel "
+            System.out.println("Nivel 5-10: En este nivel recibes un 8.5% de puntos en tus compras, para aumentar un nivel "
                     + "deberas acumular compras por al menos $1200");
-            System.out.println("Nivel 10-15: En este nivel recibes un 15% de puntos en tus compras, para aumentar un nivel "
+            System.out.println("Nivel 10-15: En este nivel recibes un 16% de puntos en tus compras, para aumentar un nivel "
                     + "deberas acumular compras por al menos $1350");
-            System.out.println("Nivel 15: En este nivel recibes un 15% de puntos en tus compras, por cada $500 de compra  "
+            System.out.println("Nivel 15: En este nivel recibes un 16% de puntos en tus compras, por cada $750 de compra  "
                     + "recibes un producto gratis de manera aleatoria");
-            System.out.println("Cada punto que tengas en tu cuenta vale $0.0027");
+            System.out.println("Cada punto que tengas en tu cuenta vale $0.014");
 
             try{
                 System.out.println("Deseas continuar? [S/N]");
@@ -243,91 +243,91 @@ public class Persona {
         if(totalCompras > 0 && totalCompras < 1000){
             //nivel 1
             System.out.println("Hola " + this.nombre + " tu cuenta es nivel 1.");
-            puntos = (3.0/100);
+            puntos = (1.0/100);
             this.nivelCuenta = 1;
             
         }else if(totalCompras < 1000 && totalCompras > 2000){
             //nivel 2
             System.out.println("Hola " + this.nombre + " tu cuenta es nivel 2.");
-            puntos = (3.0/100);
+            puntos = (1.0/100);
             this.nivelCuenta = 2;
             
         }else if(totalCompras < 2000 && totalCompras > 3000){
             //nivel 3
             System.out.println("Hola " + this.nombre + " tu cuenta es nivel 3.");
-            puntos = (3.0/100);
+            puntos = (1.0/100);
             this.nivelCuenta = 3;
             
         }else if(totalCompras < 3000 && totalCompras > 4000){
             //nivel 4
             System.out.println("Hola " + this.nombre + " tu cuenta es nivel 4.");
-            puntos = (3.0/100);
+            puntos = (1.0/100);
             this.nivelCuenta = 4;
             
         }else if(totalCompras < 4000 && totalCompras > 5200){
             //nivel 5
             System.out.println("Hola " + this.nombre + " tu cuenta es nivel 5.");
-            puntos = (7.5/100);
+            puntos = (8.5/100);
             this.nivelCuenta = 5;
             
         }else if(totalCompras < 5200 && totalCompras > 6400){
             //nivel 6
             System.out.println("Hola " + this.nombre + " tu cuenta es nivel 6.");
-            puntos = (7.5/100);
+            puntos = (8.5/100);
             this.nivelCuenta = 6;
             
         }else if(totalCompras < 6400 && totalCompras > 7600){
             //nivel 7
             System.out.println("Hola " + this.nombre + " tu cuenta es nivel 7.");
-            puntos = (7.5/100);
+            puntos = (8.5/100);
             this.nivelCuenta = 7;
             
         }else if(totalCompras < 7600 && totalCompras > 8800){
             //nivel 8
             System.out.println("Hola " + this.nombre + " tu cuenta es nivel 8.");
-            puntos = (7.5/100);
+            puntos = (8.5/100);
             this.nivelCuenta = 8;
             
         }else if(totalCompras < 8800 && totalCompras > 10000){
             //nivel 9
             System.out.println("Hola " + this.nombre + " tu cuenta es nivel 9.");
-            puntos = (7.5/100);
+            puntos = (8.5/100);
             this.nivelCuenta = 9;
             
         }else if(totalCompras < 10000 && totalCompras > 11350){
             //nivel 10
             System.out.println("Hola " + this.nombre + " tu cuenta es nivel 10.");
-            puntos = (15.0/100);
+            puntos = (16.0/100);
             this.nivelCuenta = 10;
             
         }else if(totalCompras < 11350 && totalCompras > 12700){
             //nivel 11
             System.out.println("Hola " + this.nombre + " tu cuenta es nivel 11.");
-            puntos = (15.0/100);
+            puntos = (16.0/100);
             this.nivelCuenta = 11;
             
         }else if(totalCompras < 12700 && totalCompras > 14050){
             //nivel 12
             System.out.println("Hola " + this.nombre + " tu cuenta es nivel 12.");
-            puntos = (15.0/100);
+            puntos = (16.0/100);
             this.nivelCuenta = 12;
             
         }else if(totalCompras < 14050 && totalCompras > 15400){
             //nivel 13
             System.out.println("Hola " + this.nombre + " tu cuenta es nivel 13.");
-            puntos = (15.0/100);
+            puntos = (16.0/100);
             this.nivelCuenta = 13;
             
         }else if(totalCompras < 15400 && totalCompras > 16750){
             //nivel 14
             System.out.println("Hola " + this.nombre + " tu cuenta es nivel 14.");
-            puntos = (15.0/100);
+            puntos = (16.0/100);
             this.nivelCuenta = 14;
             
         }else if(totalCompras > 16750){
             //nivel 15
             System.out.println("Hola " + this.nombre + " tu cuenta es nivel 15.");
-            puntos = (15.0/100);
+            puntos = (16.0/100);
             this.nivelCuenta = 15;
             
         } 

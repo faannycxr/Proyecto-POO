@@ -819,11 +819,11 @@ public class ProyectoFinalPOO12EQ02 {
         carso.inventario(inventarioCarso);
         
         int[][] lugaresSalas = {
-            {120, 150, 200}, 
-            {100, 160, 175},
-            {80, 100, 150},
-            {90, 125, 140},
-            {200, 230, 280}} ;
+            {120, 150, 200, 225, 250}, 
+            {80, 100, 150, 185, 210},
+            {100, 160, 175, 235, 280},
+            {90, 125, 140, 175, 190},
+            {200, 230, 280, 245, 300}} ;
         
         cu.crearSalas(lugaresSalas[0]);
         delta.crearSalas(lugaresSalas[1]);
@@ -868,7 +868,8 @@ public class ProyectoFinalPOO12EQ02 {
             try{
                 // Validar que el celular tenga exactamente 10 dígitos
                 if (celular.length() != 10 || !celular.matches("\\d+")) {
-                    System.err.println("El número de celular debe tener exactamente 10 dígitos. Por favor, inténtelo de nuevo.");
+                    System.err.println("El número de celular debe tener exactamente 10 dígitos. "
+                            + "Por favor, inténtelo de nuevo.");
                     System.out.print("Ingrese su celular (10 digitos)");
                     celular = scanner.nextLine();
                     continue; // Volver a solicitar la entrada
@@ -893,7 +894,8 @@ public class ProyectoFinalPOO12EQ02 {
 
             // Validar que la contraseña tenga al menos 8 caracteres
             if (password.length() < 8) {
-                System.err.println("La contraseña debe tener al menos 8 caracteres. Por favor, inténtelo de nuevo.");
+                System.err.println("La contraseña debe tener al menos 8 caracteres. "
+                        + "Por favor, inténtelo de nuevo.");
                 System.out.print("Ingrese su contrasena: ");
                 password = scanner.nextLine();
                 continue; // Volver a solicitar la entrada

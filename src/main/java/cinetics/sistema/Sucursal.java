@@ -265,6 +265,11 @@ public class Sucursal {
     }
     
     public void procesarPeticion(Queue<String[]> peticiones) {
+        
+            if (this.empleados.size() < 2) {
+                System.err.println("ERROR: La sucursal " + this.nombre + " no tiene suficientes empleados (mínimo 2) para la simulación.");
+                return; 
+                 }
             // Asignamos los empleados a cada caja
             Caja caja1 = new Caja(this.empleados.get(0), this.nombre);
             Caja caja2 = new Caja(this.empleados.get(1), this.nombre);
@@ -272,20 +277,26 @@ public class Sucursal {
             //agregamos los inventarios a las cajas
             caja1.setInventario(inventario);
             caja2.setInventario(inventario);
+            
+            Queue<Ticket> ticketsGenerados = new LinkedList<>();
             // Inicializamos los hilos para cada caja
             Thread hiloCaja1 = new Thread(() -> {
                 if (!peticiones.isEmpty()) {
                     String[] peticion = peticiones.poll();  // Asignamos la primera petición a la caja 1
+                    if (peticion != null) {
                     caja1.setOrden(peticion);
                     caja1.run();
+                    ticketsGenerados.add(caja1.getTicket());}
                 }
             });
 
             Thread hiloCaja2 = new Thread(() -> {
                 if (!peticiones.isEmpty()) {
                     String[] peticion = peticiones.poll();  // Asignamos la siguiente petición a la caja 2
+                    if (peticion != null) {
                     caja2.setOrden(peticion);
                     caja2.run();
+                    ticketsGenerados.add(caja1.getTicket());}
                 }
             });
 
@@ -303,8 +314,8 @@ public class Sucursal {
             }
 
             // Agregamos los tickets a la lista de ventas
-            this.ventas.add(caja1.getTicket());
-            this.ventas.add(caja2.getTicket());
+            this.ventas.addAll(ticketsGenerados);
+            //this.ventas.add(caja2.getTicket());
             
             //sumamos las ventas de las cajas
             this.totalSucursal += caja1.getTotalCaja();
@@ -359,8 +370,8 @@ public class Sucursal {
         int boletosAdulto = 0;
         int boletosNino = 0;
         int precioTotalBoletos = 0;
-        int precioAdulto = 80;
-        int precioNino = 50;
+        int precioAdulto = 95;
+        int precioNino = 60;
         int asiento = 0;
         String confirmarAlimentos;
         

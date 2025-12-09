@@ -1,5 +1,5 @@
-Hercules.-/-.B.-/-.sala5.-/-.16:00.-/-.110.-/-.Emma_Tammi
-Hellboy.-/-.B15.-/-.sala1.-/-.16:00.-/-.114.-/-.Greta_Gerwig
-Super_Mario_Bros.-/-.B15.-/-.sala2.-/-.19:30.-/-.136.-/-.Hermanas_Wachowski
-El_Rey_Leon:_Mufasa.-/-.B15.-/-.sala1.-/-.16:00.-/-.114.-/-.Greta_Gerwig
-DeadpoolWolverine.-/-.C.-/-.sala1.-/-.18:00.-/-.128.-/-.Shawn_Levy
+El_Rey_Leon:_Mufasa.-/-.A.-/-.sala2.-/-.14:00.-/-.114.-/-.Barry_Jenkins
+Super_Mario_Bros.-/-.B.-/-.sala3.-/-.16:30.-/-.136.-/-.Aaron_Horvath
+Five_Nights_at_Freddys.-/-.B.-/-.sala1.-/-.20:30.-/-.110.-/-.Emma_Tammi
+Rapidos_y_Furiosos_10.-/-.B15.-/-.sala5.-/-.18:00.-/-.141.-/-.Louis_Leterrier
+Super_Mario_Bros.-/-.B.-/-.sala4.-/-.13:00.-/-.136.-/-.Aaron_Horvath
