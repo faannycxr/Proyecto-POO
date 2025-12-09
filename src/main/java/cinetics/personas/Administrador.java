@@ -6,7 +6,7 @@ package cinetics.personas;
 
 /**
  *
- * @author faann
+ * @author ARKELOGIC
  */
 import java.util.*;
 public class Administrador {
@@ -17,7 +17,7 @@ public class Administrador {
         Scanner scanner = new Scanner(System.in);
         String usuario;
         String pssword;
-        System.out.print("Administrador. Ingrese el usuario: ");
+        System.out.print("Ingrese el usuario: ");
         usuario = scanner.nextLine();
         System.out.print("Ingrese la contrasena: ");
         pssword = scanner.nextLine();
