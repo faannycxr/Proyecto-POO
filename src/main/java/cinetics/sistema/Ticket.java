@@ -36,7 +36,7 @@ public class Ticket {
     }
     
     public synchronized void imprimirTicket(String sucursal) {
-        String archivoTicket = "src/Simulacion/archivos/ventasSimulacion.txt";
+        String archivoTicket = "src/main/java/Simulacion/archivos/ventasSimulacion.txt";
         int totalTicket = 0;
         StringBuilder ticket = new StringBuilder();
 

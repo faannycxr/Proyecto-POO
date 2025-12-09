@@ -78,7 +78,7 @@ public class ProyectoFinalPOO12EQ02 {
         hiloCargarFunciones.start();
         hiloCargarProductos.start();
         
-        main.seleccionarSucursal(cliente);
+        //main.seleccionarSucursal(cliente);
         
         //esperamos al hilo de las sucursales a que termine
         try{
@@ -91,7 +91,7 @@ public class ProyectoFinalPOO12EQ02 {
         }catch(InterruptedException e){
             e.printStackTrace();
         }
-        
+        main.seleccionarSucursal(cliente);
         if(admin.validarSesion()){
             while(true){
                 //simulacion del sistema de entrega de productos
@@ -168,6 +168,9 @@ public class ProyectoFinalPOO12EQ02 {
                         break;
                     case 4:
                         sucursalSeleccionada = "Xochimilco";
+                        break;
+                    case 5:
+                        sucursalSeleccionada = "Carso";
                         break;
                     default:
                         System.out.println("Ingrese un indice valido");
@@ -544,7 +547,7 @@ public class ProyectoFinalPOO12EQ02 {
                 return cliente;
             } else if(cliente.getNombre().toLowerCase().equals(validarNombre) || cliente.getCelular().equals(validarCelular)){
                 if(cliente.getNombre().toLowerCase().equals(validarNombre)){
-                    System.out.println("Numero de celularincorrecto, intentelo de nuevo");
+                    System.out.println("Numero de celular incorrecto, intentelo de nuevo");
                     while(true){
                         System.out.print("Ingresa tu numero telefonico: ");
                         validarCelular = scanner.nextLine();
@@ -820,7 +823,7 @@ public class ProyectoFinalPOO12EQ02 {
             {100, 160, 175},
             {80, 100, 150},
             {90, 125, 140},
-            {200, 230, 280, 245, 300}} ;
+            {200, 230, 280}} ;
         
         cu.crearSalas(lugaresSalas[0]);
         delta.crearSalas(lugaresSalas[1]);
@@ -1181,7 +1184,8 @@ public class ProyectoFinalPOO12EQ02 {
         }
         
         //sobreescribirmos el archivo de gerentes en la sucursal elegida
-        String archivoSucursales = "src/cinetics/archivos/sucursal"+sucursal+"/archivoGerentes"+sucursal;
+       
+        String archivoSucursales = "src/main/java/cinetics/archivos/"+sucursal+"/gerentes"+sucursal+".txt";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoSucursales, true))) {
             // Escribiendo los datos del usuario en el siguiente formato
             // numTrabajador.---.nombre.---.aP.---.aM.---.direccion.---.correo.---.celular.---.password
@@ -1354,8 +1358,8 @@ public class ProyectoFinalPOO12EQ02 {
 
         }
         
-        //sobreescribirmos el archivo de gerentes en la sucursal elegida
-        String archivoSucursales = "src/cinetics/archivos/sucursal"+sucursal+"archivoEmpleados"+sucursal;
+        //sobreescribirmos el archivo de empleados en la sucursal elegida
+        String archivoSucursales = "src/main/java/cinetics/archivos/"+sucursal+"empleados"+sucursal+".txt";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoSucursales, true))) {
             // Escribiendo los datos del usuario en el siguiente formato
             // numTrabajador.---.nombre.---.aP.---.aM.---.direccion.---.correo.---.celular.---.password
@@ -1432,7 +1436,7 @@ public class ProyectoFinalPOO12EQ02 {
     }
     
     private void cargarGerentes(){
-        try(BufferedReader br = new BufferedReader(new FileReader(EMPLEADOS_FILE))){
+        try(BufferedReader br = new BufferedReader(new FileReader(GERENTES_FILE))){
             String linea;
             while((linea = br.readLine()) != null){
                 try{
@@ -1482,7 +1486,7 @@ public class ProyectoFinalPOO12EQ02 {
         String nombreSucursal;
         for(Sucursal s:  this.sucursales){
             nombreSucursal = s.getNombre();
-            s.incrementarInventario("src/cinetics/archivos/sucursal"+nombreSucursal+"/inventario"+nombreSucursal+".txt");
+            s.incrementarInventario("src/main/java/cinetics/archivos/"+nombreSucursal+"/inventario"+nombreSucursal+".txt");
         }
     }
     
