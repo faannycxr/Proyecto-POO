@@ -529,54 +529,31 @@ public class ProyectoFinalPOO12EQ02 {
         System.out.println("****************************************************");
     }
     
-    public Persona comprobarInicioSesion(){
-        Scanner scanner = new Scanner(System.in);
-        boolean usuarioEnBD = false;
-        String validarNombre;
-        String validarCelular;
-        
-        System.out.println("Ingresa tus credenciales: ");
-        System.out.print("Ingresa tu nombre: ");
-        validarNombre = scanner.nextLine().toLowerCase();
-        System.out.print("Ingresa tu numero telefonico: ");
-        validarCelular = scanner.nextLine();
-        
-        for(Persona cliente: this.clientes){
-            if(cliente.getNombre().toLowerCase().equals(validarNombre) && cliente.getCelular().equals(validarCelular)){
-                usuarioEnBD = true;
-                return cliente;
-            } else if(cliente.getNombre().toLowerCase().equals(validarNombre) || cliente.getCelular().equals(validarCelular)){
-                if(cliente.getNombre().toLowerCase().equals(validarNombre)){
-                    System.out.println("Numero de celular incorrecto, intentelo de nuevo");
-                    while(true){
-                        System.out.print("Ingresa tu numero telefonico: ");
-                        validarCelular = scanner.nextLine();
-                        if(cliente.getCelular().equals(validarCelular)){
-                            return cliente;
-                        }else{
-                           System.out.println("Datos incorrectos");
-                           break;
-                        }
-                    } 
-                }else{
-                    System.out.println("Nombre incorrecto");
-                    while(true){
-                        System.out.print("Ingresa tu nombre: ");
-                        validarNombre = scanner.nextLine().toLowerCase();
-                        if(cliente.getNombre().toLowerCase().equals(validarNombre)){
-                            return cliente;
-                        }else{
-                           System.out.println("Datos incorrectos");
-                           break;
-                        }
-                    }
-                }
-            }
+    public Persona comprobarInicioSesion() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Ingresa tus credenciales: ");
+    System.out.print("Nombre: ");
+    String validarNombre = scanner.nextLine().trim().toLowerCase();
+
+    System.out.print("Celular (10 dígitos): ");
+    String validarCelular = scanner.nextLine().trim();
+
+    for (Persona cliente : this.clientes) {
+
+        String nombreBD = cliente.getNombre().trim().toLowerCase();
+        String celularBD = cliente.getCelular().trim();
+
+        //  Coincidencia exacta
+        if (nombreBD.equals(validarNombre) && celularBD.equals(validarCelular)) {
+            return cliente; //  Login exitoso
         }
-        System.out.println("No se ha encontrado el usuario en la base de datos");
-        return null;
-        
     }
+
+    System.out.println("Usuario no encontrado. Verifique sus datos.");
+    return null;
+}
+
     
     public void mostrarCarteleraSucursal(String sucursalSeleccionada, Persona cliente) {
 
@@ -591,8 +568,7 @@ public class ProyectoFinalPOO12EQ02 {
     }
     
     private void cargarUsuarios(){
-        Persona usuario = new Persona();
-        try(BufferedReader br = new BufferedReader(new FileReader(CLIENTES_FILE))){
+            try(BufferedReader br = new BufferedReader(new FileReader(CLIENTES_FILE))){
             String linea;
             while((linea = br.readLine()) != null){
                 try{
@@ -604,6 +580,7 @@ public class ProyectoFinalPOO12EQ02 {
                         continue;
                     }
                     
+                    Persona usuario = new Persona();
                     String nombre = datos[0];
                     String aPaterno = datos[1];
                     String aMaterno = datos[2];
@@ -613,6 +590,7 @@ public class ProyectoFinalPOO12EQ02 {
                     String password = datos[6];
                     String noTarjeta = datos[7];
                     String sucursal = datos[8];
+                    
                     
                     usuario.setNombre(nombre);
                     usuario.setAPaterno(aPaterno);
@@ -639,6 +617,7 @@ public class ProyectoFinalPOO12EQ02 {
         
         
     }
+    
     
     private void cargarProductos(){
         try(BufferedReader br = new BufferedReader(new FileReader(PRODUCTOS_FILE))){
