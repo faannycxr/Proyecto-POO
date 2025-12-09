@@ -873,8 +873,8 @@ public class ProyectoFinalPOO12EQ02 {
 
             // Validar que la contraseña tenga al menos 8 caracteres
             if (password.length() < 8) {
-                System.err.println("La contraseña debe tener al menos 8 caracteres. "
-                        + "Por favor, inténtelo de nuevo.");
+                System.err.println("La contrasena debe tener al menos 8 caracteres. "
+                        + "Por favor, intentelo de nuevo.");
                 System.out.print("Ingrese su contrasena: ");
                 password = scanner.nextLine();
                 continue; // Volver a solicitar la entrada
@@ -1085,7 +1085,7 @@ public class ProyectoFinalPOO12EQ02 {
             try{
                 // Validar que el celular tenga exactamente 10 dígitos
                 if (celular.length() != 10 || !celular.matches("\\d+")) {
-                    System.err.println("El número de celular debe tener exactamente 10 dígitos. Por favor, inténtelo de nuevo.");
+                    System.err.println("El numero de celular debe tener exactamente 10 dígitos. Por favor, intentelo de nuevo.");
                     System.out.print("Ingrese su celular (10 digitos)");
                     celular = scanner.nextLine();
                     continue; // Volver a solicitar la entrada
@@ -1106,7 +1106,7 @@ public class ProyectoFinalPOO12EQ02 {
 
             // Validar que la contraseña tenga al menos 8 caracteres
             if (password.length() < 8) {
-                System.err.println("La contraseña debe tener al menos 8 caracteres. Por favor, inténtelo de nuevo.");
+                System.err.println("La contrasena debe tener al menos 8 caracteres. Por favor, intentelo de nuevo.");
                 System.out.print("Ingrese su contrasena: ");
                 password = scanner.nextLine();
                 continue; // Volver a solicitar la entrada
@@ -1234,7 +1234,7 @@ public class ProyectoFinalPOO12EQ02 {
             try{
                 // Validar que el celular tenga exactamente 10 dígitos
                 if (celular.length() != 10 || !celular.matches("\\d+")) {
-                    System.err.println("El número de celular debe tener exactamente 10 dígitos. Por favor, inténtelo de nuevo.");
+                    System.err.println("El numero de celular debe tener exactamente 10 dígitos. Por favor, intentelo de nuevo.");
                     System.out.print("Ingrese su celular (10 digitos)");
                     celular = scanner.nextLine();
                     continue; // Volver a solicitar la entrada
@@ -1255,7 +1255,7 @@ public class ProyectoFinalPOO12EQ02 {
 
             // Validar que la contraseña tenga al menos 8 caracteres
             if (password.length() < 8) {
-                System.err.println("La contraseña debe tener al menos 8 caracteres. Por favor, inténtelo de nuevo.");
+                System.err.println("La contrasena debe tener al menos 8 caracteres. Por favor, intentelo de nuevo.");
                 System.out.print("Ingrese su contrasena: ");
                 password = scanner.nextLine();
                 continue; // Volver a solicitar la entrada
