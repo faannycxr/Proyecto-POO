@@ -781,34 +781,39 @@ public class ProyectoFinalPOO12EQ02 {
         Sucursal delta = new Sucursal("Delta");
         Sucursal universidad = new Sucursal("Universidad");
         Sucursal xochi = new Sucursal("Xochimilco");
+        Sucursal carso = new Sucursal("Carso");
         
         this.sucursales.add(cu);
         this.sucursales.add(delta);
         this.sucursales.add(universidad);
         this.sucursales.add(xochi);
+        this.sucursales.add(carso);
         
         //rutas de los archivos con las carteleras
-        String carteleraCU = "src/cinetics/archivos/sucursalCU/carteleraCU.txt";
-        String carteleraDelta = "src/cinetics/archivos/sucursalDelta/carteleraDelta.txt";
-        String carteleraUniversidad= "src/cinetics/archivos/sucursalUniversidad/carteleraUniversidad.txt";
-        String carteleraXochi = "src/cinetics/archivos/sucursalXochimilco/carteleraXochimilco.txt";
-        
+        String carteleraCU = "src/main/java/cinetics/archivos/CU/carteleraCU.txt";
+        String carteleraDelta = "src/main/java/cinetics/archivos/delta/carteleraDELTA.txt";
+        String carteleraUniversidad= "src/main/java/cinetics/archivos/universidad/carteleraUNIVERSIDAD.txt";
+        String carteleraXochi = "src/main/java/cinetics/archivos/xochimilco/carteleraXOCHIMILCO.txt";
+        String carteleraCarso = "src/main/java/cinetics/archivos/carso/carteleraCARSO.txt";
         
         //crea las carteleras
         cu.cartelera(carteleraCU);
         delta.cartelera(carteleraDelta);
         universidad.cartelera(carteleraUniversidad);
         xochi.cartelera(carteleraXochi);
+        carso.cartelera(carteleraCarso);
         
-        String inventarioCU = "src/cinetics/archivos/sucursalCU/inventarioCU.txt";
-        String inventarioDelta = "src/cinetics/archivos/sucursalDelta/inventarioDelta.txt";
-        String inventarioUniversidad= "src/cinetics/archivos/sucursalUniversidad/inventarioUniversidad.txt";
-        String inventarioXochi = "src/cinetics/archivos/sucursalXochimilco/inventarioXochimilco.txt";
+        String inventarioCU = "src/main/java/cinetics/archivos/CU/inventarioCU.txt";
+        String inventarioDelta = "src/main/java/cinetics/archivos/delta/inventarioDELTA.txt";
+        String inventarioUniversidad= "src/main/java/cinetics/archivos/universidad/inventarioUNIVERSIDAD.txt";
+        String inventarioXochi = "src/main/java/cinetics/archivos/xochimilco/inventarioXOCHIMILCO.txt";
+        String inventarioCarso = "src/main/java/cinetics/archivos/carso/inventarioCARSO.txt";
         
         cu.inventario(inventarioCU);
         delta.inventario(inventarioDelta);
         universidad.inventario(inventarioUniversidad);
         xochi.inventario(inventarioXochi);
+        carso.inventario(inventarioCarso);
         
         int[][] lugaresSalas = {
             {120, 150, 200}, 
