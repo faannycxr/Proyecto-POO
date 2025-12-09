@@ -8,6 +8,28 @@ package Simulacion;
  *
  * @author faann
  */
+import cinetics.sistema.Ticket;
+import java.util.*;
+
+
 public class Caja {
+    private String numCaja;
+    private ArrayList<Ticket> ventas = new ArrayList<>();
+    private double total;
+    
+    public Caja(String numCaja){
+        this.numCaja = numCaja;
+    }
+    
+    public String getNumCaja(){
+        return this.numCaja;
+    }
+    
+    //escribe el archivo de ventas con cada venta que se realice
+    public void registrarVenta(){
+        
+    }
+    
+    
     
 }
