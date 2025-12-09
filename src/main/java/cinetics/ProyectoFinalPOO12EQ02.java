@@ -45,12 +45,12 @@ public class ProyectoFinalPOO12EQ02 {
             System.out.println("Desarrollo la estructura interna del sistema ");
             System.out.println("Camacho Ramos Paola Estefany.   321222646"); //pongan sus numeros de cuenta, no los pide, pero siento que quedaria bn, o si no, avisenme para quitar el mio xd
             System.out.println("Desarrollo la parte visual y de experencia de usuario ");
-            System.out.println("Cuevas Lopez Jose Roberto.   #########");
+            System.out.println("Cuevas Lopez Jose Roberto.   321147530");
             System.out.println("Coordino la parte tcnica y calidad del sistema ");
-            System.out.println("Luis Ortiz Deborah Patricia.   #########");
+            System.out.println("Luis Ortiz Deborah Patricia.   423030200");
             System.out.println("Definio y documento los requerimientos del cliente");
-            System.out.println("Vargas de la Cruz Alan.   #########");    
-            System.out.println("Valido el funcionamiento y detectó errores del sistema"); 
+            System.out.println("Vargas de la Cruz Alan.  322248537");    
+            System.out.println("Valido el funcionamiento y detecto errores del sistema"); 
             System.out.println("***********************************************");
       
         
