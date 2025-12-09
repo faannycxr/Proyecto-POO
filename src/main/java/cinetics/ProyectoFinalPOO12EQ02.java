@@ -151,7 +151,7 @@ public class ProyectoFinalPOO12EQ02 {
             
             try{
                 System.out.println("Seleccione una sucursal:");
-                System.out.println("1.CU\n2.Delta\n3.Universidad\n4.Xochimilco");
+                System.out.println("1.CU\n2.Delta\n3.Universidad\n4.Xochimilco\n5.Carso");
                 System.out.print("Su seleccion: ");
                 seleccion = scanner.nextInt();
                 scanner.nextLine();
