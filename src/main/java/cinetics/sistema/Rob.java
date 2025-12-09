@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @author faann
  */
 public class Rob {
-    public void ayudarCompra(CineTICs main, Persona cliente){
+    public void ayudarCompra(ProyectoFinalPOO12EQ02 main, Persona cliente){
         Scanner scanner = new Scanner(System.in);
         System.out.println("****************************************************");
         System.out.println("Bienvenido al asistente de compras Rob ¿Que deseas hacer?");
@@ -33,7 +33,7 @@ public class Rob {
         System.out.println("****************************************************");
     }
     
-    public void mostrarProductos(CineTICs main, Persona cliente){
+    public void mostrarProductos(ProyectoFinalPOO12EQ02 main, Persona cliente){
         int indiceProducto = 1;
         for(Sucursal s: main.getSucursales()){
             if(s.getNombre().equals(cliente.getSucursal())){
@@ -43,7 +43,7 @@ public class Rob {
         
     }
     
-    public void ayudarEstadisticas(CineTICs main){
+    public void ayudarEstadisticas(ProyectoFinalPOO12EQ02 main){
         Scanner scanner = new Scanner(System.in);
         System.out.println("****************************************************");
         //comunicarse con siga
@@ -71,7 +71,7 @@ public class Rob {
         System.out.println("****************************************************");
     }
     
-    public void recomendarPelicula(CineTICs main,  Persona cliente){    
+    public void recomendarPelicula(ProyectoFinalPOO12EQ02 main,  Persona cliente){    
         Scanner scanner = new Scanner(System.in);
         Pelicula peliculaABuscar = cliente.buscarPelicula(main.getPeliculas());
         System.out.println("****************************************************");

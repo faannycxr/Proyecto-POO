@@ -55,11 +55,11 @@ public class ProyectoFinalPOO12EQ02 {
       
         
         Scanner scanner = new Scanner(System.in);
-        CineTICs main = new CineTICs();
+        ProyectoFinalPOO12EQ02 main = new ProyectoFinalPOO12EQ02();
         Persona cliente = new Persona();
         Administrador admin = new Administrador();
         Simulacion simulacion = new Simulacion();
-        ROB rob = new ROB();
+        Rob rob = new Rob();
         
         Thread hiloIniciarSucursales = new Thread(()->main.iniciarSucursales());
         Thread hiloCargarUsuarios = new Thread(() ->main.cargarUsuarios());
@@ -185,7 +185,7 @@ public class ProyectoFinalPOO12EQ02 {
         
     }
     
-    public void menuClienteCuenta(CineTICs main, Persona cliente, String sucursalSeleccionada, ROB rob){
+    public void menuClienteCuenta(ProyectoFinalPOO12EQ02 main, Persona cliente, String sucursalSeleccionada, Rob rob){
         Scanner scanner = new Scanner(System.in);
         while(true){
             String seleccionUsuario;
@@ -270,7 +270,7 @@ public class ProyectoFinalPOO12EQ02 {
         }
     }
     
-    public void menuClienteSinCuenta(CineTICs main, Persona cliente, String sucursalSeleccionada, ROB rob){
+    public void menuClienteSinCuenta(ProyectoFinalPOO12EQ02 main, Persona cliente, String sucursalSeleccionada, Rob rob){
         Scanner scanner = new Scanner(System.in);
         
         while(true){
@@ -372,7 +372,7 @@ public class ProyectoFinalPOO12EQ02 {
         }
     }
     
-    public void menuAdministrador(Administrador admin, CineTICs main, ROB rob){
+    public void menuAdministrador(Administrador admin, ProyectoFinalPOO12EQ02 main, Rob rob){
         Scanner scanner = new Scanner(System.in);
         while(true){
             String seleccionAdministrador;
