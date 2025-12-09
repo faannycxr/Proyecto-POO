@@ -431,7 +431,7 @@ public class ProyectoFinalPOO12EQ02 {
                             }
                             continue;
                         case 9:
-                            break;
+                            return;
                         default:
                             System.out.println("Ingrese un indice valido");
                             continue;
@@ -1527,18 +1527,18 @@ public class ProyectoFinalPOO12EQ02 {
                 switch(seleccion){
                     case 1:
                         this.reporteSucursal();
-                        break;
+                        return;
                     case 2:
                         this.reporteFuncion();
-                        break;
+                        return;
                     case 3:
                         this.reporteProducto();
-                        break;
+                        return;
                     case 4:
                         this.reporteSucursal();
                         this.reporteFuncion();
                         this.reporteProducto();
-                        break;
+                        return;
                     default: 
                         System.out.println("Ingrese un indice valido");
                         continue;
@@ -1565,18 +1565,18 @@ public class ProyectoFinalPOO12EQ02 {
                 switch(seleccion){
                     case 1:
                         this.verReporteSucursal();
-                        break;
+                        return;
                     case 2:
                         this.verReporteFuncion();
-                        break;
+                        return;
                     case 3:
                         this.verReporteProducto();
-                        break;
+                        return;
                     case 4:
                         this.verReporteSucursal();
                         this.verReporteFuncion();
                         this.verReporteProducto();
-                        break;
+                        return;
                     default: 
                         System.out.println("Ingrese un indice valido");
                         continue;
