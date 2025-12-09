@@ -819,12 +819,14 @@ public class ProyectoFinalPOO12EQ02 {
             {120, 150, 200}, 
             {100, 160, 175},
             {80, 100, 150},
-            {90, 125, 140}} ;
+            {90, 125, 140},
+            {200, 230, 280, 245, 300}} ;
         
         cu.crearSalas(lugaresSalas[0]);
         delta.crearSalas(lugaresSalas[1]);
         universidad.crearSalas(lugaresSalas[2]);
         xochi.crearSalas(lugaresSalas[3]);
+        carso.crearSalas(lugaresSalas[4]);
         
         
     }
@@ -1145,7 +1147,7 @@ public class ProyectoFinalPOO12EQ02 {
         while(true){
             try{
                 System.out.println("Seleccione la sucursal donde trabaja el gerente: ");
-                System.out.println("1.CU\n2.Delta\n3.Universidad\n4.Xochimilco");
+                System.out.println("1.CU\n2.Delta\n3.Universidad\n4.Xochimilco\n5.Carso");
                 System.out.print("Tu seleccion: ");
                 selSucursal = scanner.nextInt();
                 
@@ -1162,6 +1164,9 @@ public class ProyectoFinalPOO12EQ02 {
                      case 4:
                         sucursal = "Xochimilco";
                         break;
+                     case 5:
+                         sucursal = "Carso";
+                         break;
                      default:
                          System.out.println("Ingrese un indice valido");
                          continue;
@@ -1316,7 +1321,7 @@ public class ProyectoFinalPOO12EQ02 {
         while(true){
             try{
                 System.out.println("Seleccione la sucursal donde trabaja el gerente: ");
-                System.out.println("1.CU\n2.Delta\n3.Universidad\n4.Xochimilco");
+                System.out.println("1.CU\n2.Delta\n3.Universidad\n4.Xochimilco\n5.Carso");
                 System.out.print("Tu seleccion: ");
                 selSucursal = scanner.nextInt();
                 
@@ -1333,6 +1338,9 @@ public class ProyectoFinalPOO12EQ02 {
                      case 4:
                         sucursal = "Xochimilco";
                         break;
+                     case 5:
+                         sucursal = "Carso";
+                         break;
                      default:
                          System.out.println("Ingrese un indice valido");
                          continue;
