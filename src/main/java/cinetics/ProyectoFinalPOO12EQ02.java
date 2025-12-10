@@ -35,11 +35,11 @@ public class ProyectoFinalPOO12EQ02 {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("\n--- INICIAR SESIÓN ---");
+        System.out.println("\n------- INICIAR SESION --------");
         System.out.print("Correo o celular: ");
         String user = sc.nextLine().trim();
 
-        System.out.print("Contraseña: ");
+        System.out.print("Contrasena: ");
         String pass = sc.nextLine().trim();
 
         for (Persona c : this.clientes) {
@@ -50,7 +50,7 @@ public class ProyectoFinalPOO12EQ02 {
 
             if ((correoOK || celOK) && passOK) {
                 c.setSesionActiva(true);
-                System.out.println("\nInicio de sesión correcto, bienvenido " + c.getNombre());
+                System.out.println("\nInicio de sesion correcto, bienvenido " + c.getNombre());
                 return c;
             }
         }
@@ -59,11 +59,6 @@ public class ProyectoFinalPOO12EQ02 {
         return null;
     }
 
-
-
-    // -----------------------------------------
-    // INICIO DEL PROGRAMA
-    // -----------------------------------------
     public static void main(String[] args) {
 
         System.out.println("***********************************************");
@@ -76,11 +71,11 @@ public class ProyectoFinalPOO12EQ02 {
         System.out.println("Camacho Ramos Paola Estefany.   321222646");
         System.out.println("Desarrollo la parte visual y de experiencia de usuario ");
         System.out.println("Cuevas Lopez Jose Roberto.   321147530");
-        System.out.println("Coordinó la parte técnica y calidad del sistema ");
+        System.out.println("Coordino la parte tecnica y calidad del sistema ");
         System.out.println("Luis Ortiz Deborah Patricia.   423030200");
-        System.out.println("Definió y documentó los requerimientos del cliente");
+        System.out.println("Definio y documento los requerimientos del cliente");
         System.out.println("Vargas de la Cruz Alan.  322248537");    
-        System.out.println("Validó el funcionamiento y detectó errores del sistema");
+        System.out.println("Valido el funcionamiento y detecto errores del sistema");
         System.out.println("***********************************************");
 
         Scanner scanner = new Scanner(System.in);
@@ -118,52 +113,31 @@ public class ProyectoFinalPOO12EQ02 {
 
         main.seleccionarSucursal(cliente);
 
-
-        // --------------------------
         // LOGIN ADMIN
-        // --------------------------
         if (admin.validarSesion()) {
 
-            // Simulación de entrega de productos
-            while (true) {
+        // mostrar menu del administrador
+        main.menuAdministrador(admin, main, rob);
+        return;
+    }
 
-                System.out.println("¿Desea iniciar una simulación del sistema? [S/N]");
-                String iniciarSimulacion = scanner.nextLine().toLowerCase();
-
-                if (iniciarSimulacion.equals("s")) {
-
-                    if (!simulacion.leerPeticiones(main.sucursales)) {
-                        main.actualizarInventarios();
-                    }
-
-                } else {
-                    break;
-                }
-            }
-
-            main.menuAdministrador(admin, main, rob);
-            return;
-        }
-
-
-
-        // --------------------------
+        // -----------------------------------
         // FLUJO PRINCIPAL DE CLIENTE
-        // --------------------------
+        // -----------------------------------
         while (true) {
 
-            if (!cliente.sesionActiva()) {
+        if (!cliente.sesionActiva()) {
 
-                // menú sin cuenta
-                main.menuClienteSinCuenta(main, cliente, cliente.getSucursal(), rob);
+        // menu sin cuenta
+        main.menuClienteSinCuenta(main, cliente, cliente.getSucursal(), rob);
 
-            } else {
+        } else {
 
-                // menú con cuenta
-                main.menuClienteCuenta(main, cliente, cliente.getSucursal(), rob);
-            }
-        }
+        // menu con cuenta
+        main.menuClienteCuenta(main, cliente, cliente.getSucursal(), rob);
     }
+}
+}
     
     public ArrayList<Pelicula> getPeliculas(){
         return this.peliculas;
@@ -223,249 +197,302 @@ public class ProyectoFinalPOO12EQ02 {
     }
     
     public void menuClienteCuenta(ProyectoFinalPOO12EQ02 main, Persona cliente, String sucursalSeleccionada, Rob rob){
-        Scanner scanner = new Scanner(System.in);
-        while(true){
-            String seleccionUsuario;
-            int selUsuarioInt = 0;
-            if(cliente.sesionActiva()){
-                while(true){
-                    //mostar menu cuando ya se inicio sesion
-                    //consumir la ultima seleccion
-                    scanner.nextLine();
-                    this.mostrarHeader(cliente.getSucursal());
-                    System.out.println("1.Ver Cartelera\n2.Buscar Pelicula\n3.Cambiar sucursal\n" + 
-                            "\n4.Buscar producto\n5.Ver Carrito\n"+
-                            "6.Actualizar datos personales\n7.Registrarse\n8.Ver mis compras\n" +
-                            "9.Ver mis puntos\n10.Salir");
-                    seleccionUsuario = scanner.nextLine();
-                        try{
-                            selUsuarioInt = Integer.parseInt(seleccionUsuario);
-                        }catch(Exception e){
-                            System.out.println("Entrada invalida");
-                            scanner.nextLine();
-                        }
-                        break;
-                }
-                switch(selUsuarioInt){
-                        case 1:
-                            System.out.println("Mostrando cartelera de la sucursal " + cliente.getSucursal());
-                            this.mostrarCarteleraSucursal(cliente.getSucursal(), cliente);
-                            System.out.println("Pedir ayuda a ROB? [S/N]");
-                            String ayudaPelicula = scanner.nextLine().toLowerCase();
-                            if(ayudaPelicula.equals("s")){
-                                rob.recomendarPelicula(main, cliente);
-                            }
-                            break;
-                        case 2:
-                            //agregar metodo para buscar pelicula
-                            Pelicula peliculaABuscar = cliente.buscarPelicula(this.peliculas);
-                            this.buscarPelicula(peliculaABuscar, cliente);
-                            break;
-                        case 3:
-                            this.seleccionarSucursal(cliente);
-                            break;
-                        case 4:
-                            //agregar metodo para buscar producto
-                            System.out.println("Pedir ayuda a ROB? [S/N]");
-                            String ayudaProducto = scanner.nextLine().toLowerCase();
-                            if(ayudaProducto.equals("s")){
-                                rob.ayudarCompra(main, cliente);
-                            }else{
-                                this.buscarProducto(cliente.getSucursal(), cliente);
-                            }
-                            break;
-                        case 5:
-                            for(Sucursal s: this.sucursales){
-                                if(s.getNombre().equals(cliente.getSucursal())){
-                                    cliente.verCarrito(s, cliente);
-                                    break;
-                                }
-                            }
-                            break;
-                        case 6:
-                            //agregar metodo para sobreescribir un cliente
-                            break;
-                        case 7:
-                            this.registrarCliente(sucursalSeleccionada, cliente);
-                            break;
-                        case 8: 
-                            //ver los puntos del cliente
-                            cliente.verMisPuntos();
-                            break;
-                        case 9: 
-                            //ver las compras del cliente
-                            cliente.verMisCompras();
-                            break;
-                        case 10:
-                            System.out.println("Saliendo del sistema");
-                            return;
-                        default:
-                            System.out.println("Ingrese un indice valido");
-                            continue;
-                    }
-            }
-        }
-    }
-    
-    public void menuClienteSinCuenta(ProyectoFinalPOO12EQ02 main, Persona cliente, String sucursalSeleccionada, Rob rob){
-        Scanner scanner = new Scanner(System.in);
-        
-        while(true){
-            String seleccionUsuario;
-            int selUsuarioInt= 0;
-            
-            //mostrar menu cuando no se ha iniciado sesion
-            if(!cliente.sesionActiva()){
-                while(true){
-                    this.mostrarHeader(sucursalSeleccionada);
-                    System.out.println("1.Ver Cartelera\n2.Buscar Pelicula\n3.Cambiar sucursal\n" + 
-                            "4.Iniciar sesion\n5.Buscar producto\n6.Ver Carrito\n"+
-                            "7.Actualizar datos personales\n8.Registrarse\n9.Salir");
-                    System.out.println("Seleccione una opcion:");
-                    seleccionUsuario = scanner.nextLine();
-                    try{
-                        selUsuarioInt = Integer.parseInt(seleccionUsuario);
-                    }catch(Exception e){
-                        System.out.println("Entrada invalida");
-                        scanner.nextLine();
-                    }
-                    break;
-                }
-                
-                switch(selUsuarioInt){
-                    case 1:
-                        this.registrarCliente(cliente.getSucursal(), cliente);
-                        System.out.println("Mostrando cartelera de la sucursal " + cliente.getSucursal());
-                        this.mostrarCarteleraSucursal(cliente.getSucursal(), cliente);
-                        System.out.println("Pedir ayuda a ROB? [S/N]");
-                        String ayudaPelicula = scanner.nextLine().toLowerCase();
-                        if(ayudaPelicula.equals("s")){
-                            rob.recomendarPelicula(main, cliente);
-                        }
-                        continue;
-                    case 2:
-                        //agregar metodo para buscar pelicula
-                        this.registrarCliente(cliente.getSucursal(), cliente);
-                        Pelicula peliculaABuscar = cliente.buscarPelicula(this.peliculas);
-                         this.buscarPelicula(peliculaABuscar, cliente);
-                        continue;
-                    case 3:
-                        this.seleccionarSucursal(cliente);
-                        continue;
-                    case 4:
-                    Persona usuarioLogeado = this.loginCliente();
 
-                    if (usuarioLogeado != null) {
-                     cliente = usuarioLogeado;       // Cambiamos referencia
-                    System.out.println("Sesión iniciada correctamente.");
-                    return;                         // Regresamos al menú ya con sesión activa
-                     } else {
-                     System.out.println("No se pudo iniciar sesión.");
-                     }
-                     continue;
-                     
-                    case 5:
-                        //agregar metodo para buscar producto
-                        System.out.println("Pedir ayuda a ROB? [S/N]");
-                        String ayudaProducto = scanner.nextLine().toLowerCase();
-                        if(ayudaProducto.equals("s")){
-                            rob.ayudarCompra(main, cliente);
-                        }else{
-                            this.buscarProducto(cliente.getSucursal(), cliente);
-                        }
-                        continue;
-                    case 6:
-                        for(Sucursal s: this.sucursales){
-                            if(s.getNombre().equals(cliente.getSucursal())){
-                                cliente.verCarrito(s, cliente);
-                                break;
-                            }
-                        }
-                        continue;
-                    case 7:
-                        //agregar metodo para sobreescribir un cliente
-                        continue;
-                    case 8:
-                        this.registrarCliente(sucursalSeleccionada, cliente);
-                        continue;
-                    case 9:
-                        System.out.println("Saliendo del sistema");
-                        return;
-                    default:
-                        System.out.println("Ingrese un indice valido");
-                        continue;
-                }
-            
-            
-            }
-            
+    Scanner scanner = new Scanner(System.in);
+
+    while(true){
+
+        if(cliente == null || !cliente.sesionActiva()){
+            return; 
         }
-    }
-    
-    public void menuAdministrador(Administrador admin, ProyectoFinalPOO12EQ02 main, Rob rob){
-        Scanner scanner = new Scanner(System.in);
-        while(true){
-            String seleccionAdministrador;
-            int selAdministradorInt = 0;
-            if(admin.validarSesion()){
-                while(true){
-                    System.out.println("1.Actualizar Cartelera\n2.Ver Productos\n3.Actualizar Stock de Productos\n" + 
-                            "\n4.Agregar Producto\n5.Ver Empleados\n"+
-                            "6.Agregar Empleados\n7.Ver estadisticas de ventas\n8.Generar Reporte de Ventas\n" +
-                            "9.Salir\n");
-                    seleccionAdministrador = scanner.nextLine();
-                        try{
-                            selAdministradorInt = Integer.parseInt(seleccionAdministrador);
-                        }catch(Exception e){
-                            System.out.println("Entrada invalida");
-                            scanner.nextLine();
-                        }
+
+        this.mostrarHeader(cliente.getSucursal());
+        System.out.println("1.Ver Cartelera");
+        System.out.println("2.Buscar Pelicula");
+        System.out.println("3.Cambiar sucursal");
+        System.out.println("4.Buscar producto");
+        System.out.println("5.Ver Carrito");
+        System.out.println("6.Actualizar datos personales");
+        System.out.println("7.Registrarse");
+        System.out.println("8.Ver mis compras");
+        System.out.println("9.Ver mis puntos");
+        System.out.println("10.Salir");
+        System.out.print("Seleccione una opcion: ");
+
+        String opcion = scanner.nextLine();
+        int sel = 0;
+
+        try { 
+            sel = Integer.parseInt(opcion); 
+        } catch(Exception e){ 
+            System.out.println("Entrada invalida");
+            continue; 
+        }
+
+        switch(sel){
+
+            case 1:
+                System.out.println("Mostrando cartelera de la sucursal " + cliente.getSucursal());
+                this.mostrarCarteleraSucursal(cliente.getSucursal(), cliente);
+                break;
+
+            case 2:
+                Pelicula peliculaABuscar = cliente.buscarPelicula(this.peliculas);
+                this.buscarPelicula(peliculaABuscar, cliente);
+                break;
+
+            case 3:
+                this.seleccionarSucursal(cliente);
+                break;
+
+            case 4:
+                this.buscarProducto(cliente.getSucursal(), cliente);
+                break;
+
+            case 5:
+                for(Sucursal s: this.sucursales){
+                    if(s.getNombre().equals(cliente.getSucursal())){
+                        cliente.verCarrito(s, cliente);
                         break;
-                }
-                switch(selAdministradorInt){
-                        case 1:
-                            this.actualizarCarteleras();
-                            this.cargarFunciones();
-                            continue;
-                        case 2:
-                            this.listarProductos();
-                            continue;
-                        case 3:
-                            this.actualizarInventarios();
-                            continue;
-                        case 4:
-                            this.agregarProducto();
-                            this.cargarProductos();
-                            continue;
-                        case 5:
-                            this.listarEmpleados();
-                            continue;
-                        case 6:
-                            this.agregarEmpleado();
-                            continue;
-                        case 7:
-                            //ver estadisticas de venta
-                            this.verReporteVentas();
-                            continue;
-                        case 8:
-                            //generar reporte de ventas
-                            System.out.println("Pedir ayuda a ROB? [S/N]");
-                            String ayudaReporte = scanner.nextLine().toLowerCase();
-                            if(ayudaReporte.equals("s")){
-                                rob.ayudarEstadisticas(main);
-                            }else{
-                                this.generarReporteVentas();
-                            }
-                            continue;
-                        case 9:
-                            return;
-                        default:
-                            System.out.println("Ingrese un indice valido");
-                            continue;
                     }
-            }
+                }
+                break;
+
+            case 6:
+                this.actualizarDatosPersonales(cliente);
+                break;
+
+            case 7:
+                this.registrarCliente(cliente.getSucursal(), cliente);
+                break;
+
+            case 8:
+                cliente.verMisCompras();
+                break;
+
+            case 9:
+                cliente.verMisPuntos();
+                break;
+
+            case 10:
+                System.out.println("Saliendo del sistema...");
+                cliente.setSesionActiva(false);
+                return;
+
+            default:
+                System.out.println("Ingrese un indice valido");
+                break;
         }
     }
+}
+    
+    public void menuClienteSinCuenta(ProyectoFinalPOO12EQ02 main, Persona clienteActual, String sucursalSeleccionada, Rob rob){
+
+    Scanner scanner = new Scanner(System.in);
+
+    while(true){
+
+        if(clienteActual != null && clienteActual.sesionActiva()){
+            return; // ya tiene sesion, salimos al menuClienteCuenta
+        }
+
+        this.mostrarHeader(sucursalSeleccionada);
+        System.out.println("1.Ver Cartelera");
+        System.out.println("2.Buscar Pelicula");
+        System.out.println("3.Cambiar sucursal");
+        System.out.println("4.Iniciar sesion");
+        System.out.println("5.Buscar producto");
+        System.out.println("6.Ver Carrito");
+        System.out.println("7.Actualizar datos personales");
+        System.out.println("8.Registrarse");
+        System.out.println("9.Salir");
+        System.out.print("Seleccione una opcion: ");
+
+        String opcion = scanner.nextLine();
+
+        int sel = 0;
+        try { sel = Integer.parseInt(opcion); } catch(Exception e){ continue; }
+
+        switch(sel){
+
+            case 4: {
+
+                Persona usuarioLogeado = this.loginCliente();
+
+                if(usuarioLogeado != null){
+                    // sustituimos clienteActual por usuario real
+                    clienteActual.setNombre(usuarioLogeado.getNombre());
+                    clienteActual.setAPaterno(usuarioLogeado.getAPaterno());
+                    clienteActual.setAMaterno(usuarioLogeado.getAMaterno());
+                    clienteActual.setCorreo(usuarioLogeado.getCorreo());
+                    clienteActual.setCelular(usuarioLogeado.getCelular());
+                    clienteActual.setPassword(usuarioLogeado.getPassword());
+                    clienteActual.setSucursal(usuarioLogeado.getSucursal());
+                    clienteActual.setSesionActiva(true);
+
+                    System.out.println("Sesion iniciada correctamente.");
+
+                    return; // volvemos al while principal
+                }
+
+                System.out.println("No se pudo iniciar sesion.");
+                break;
+            }
+
+            default:
+                
+                break;
+        }
+    }
+}
+    
+    public void menuAdministrador(Administrador admin, ProyectoFinalPOO12EQ02 main, Rob rob) {
+
+    Scanner sc = new Scanner(System.in);
+
+    while (true) {
+
+        System.out.println("********* MENU ADMIN *********");
+        System.out.println("1. Actualizar cartelera");
+        System.out.println("2. Ver productos");
+        System.out.println("3. Actualizar stock productos");
+        System.out.println("4. Agregar producto");
+        System.out.println("5. Ver empleados");
+        System.out.println("6. Agregar empleado");
+        System.out.println("7. Simulacion del sistema");
+        System.out.println("8. Reporte de ventas");
+        System.out.println("9. Salir");
+        System.out.print("Seleccione una opcion: ");
+
+        String op = sc.nextLine();
+        int sel = 0;
+
+        try {
+            sel = Integer.parseInt(op);
+        } catch (Exception e) {
+            System.out.println("Entrada invalida");
+            continue;
+        }
+
+        switch (sel) {
+
+            case 1:
+                this.actualizarCarteleras();
+                this.cargarFunciones();
+                break;
+
+            case 2:
+                this.listarProductos();
+                break;
+
+            case 3:
+                this.actualizarInventarios();
+                break;
+
+            case 4:
+                this.agregarProducto();
+                this.cargarProductos();
+                break;
+
+            case 5:
+                this.listarEmpleados();
+                break;
+
+            case 6:
+                this.agregarEmpleado();
+                break;
+
+            case 7:
+                this.iniciarSimulacion(main);
+                break;
+
+            case 8:
+                this.menuReportes();
+                break;
+
+            case 9:
+                System.out.println("Cerrando sesion de administrador...");
+                return;
+
+            default:
+                System.out.println("Opcion invalida");
+                break;
+        }
+    }
+}
+    public void menuReportes() {
+
+    Scanner sc = new Scanner(System.in);
+
+    while (true) {
+
+        System.out.println("****** REPORTES ******");
+        System.out.println("1. Reporte por sucursal");
+        System.out.println("2. Reporte por funcion");
+        System.out.println("3. Reporte por producto");
+        System.out.println("4. Reporte total");
+        System.out.println("5. Salir");
+        System.out.print("Seleccione una opcion: ");
+
+        int sel = 0;
+        try {
+            sel = Integer.parseInt(sc.nextLine());
+        } catch (Exception e) {
+            System.out.println("Entrada invalida");
+            continue;
+        }
+
+        switch (sel) {
+            case 1:
+                this.verReporteSucursal();
+                break;
+            case 2:
+                this.verReporteFuncion();
+                break;
+            case 3:
+                this.verReporteProducto();
+                break;
+            case 4:
+                this.verReporteSucursal();
+                this.verReporteFuncion();
+                this.verReporteProducto();
+                break;
+            case 5:
+                return;
+            default:
+                System.out.println("Opcion invalida");
+                break;
+        }
+    }
+}
+    
+    public void iniciarSimulacion(ProyectoFinalPOO12EQ02 main){
+
+    Scanner sc = new Scanner(System.in);
+
+    System.out.println("Iniciar simulacion del sistema? [S/N]");
+    String op = sc.nextLine().toLowerCase();
+
+    if(!op.equals("s")){
+        System.out.println("Simulacion cancelada.");
+        return;
+    }
+
+    System.out.println("Leyendo peticiones...");
+    
+    Simulacion sim = new Simulacion();
+
+    if(!sim.leerPeticiones(main.sucursales)){
+        System.out.println("No se pueden iniciar operaciones, actualice inventarios.");
+        main.actualizarInventarios();
+        return;
+    }
+
+    System.out.println("Simulacion completada.");
+}
+    
+    
+    
     
     public void buscarPelicula(Pelicula peliculaABuscar, Persona cliente){
         Scanner scanner = new Scanner(System.in);
@@ -560,19 +587,26 @@ public Persona comprobarInicioSesion() {
     Scanner scanner = new Scanner(System.in);
 
     System.out.println("Ingresa tus credenciales: ");
-    System.out.print("Nombre: ");
+
+    System.out.print("Nombre completo (nombre + apellidos): ");
     String validarNombre = scanner.nextLine().trim().toLowerCase();
 
-    System.out.print("Celular (10 dígitos): ");
+    System.out.print("Celular (10 digitos): ");
     String validarCelular = scanner.nextLine().trim();
 
     for (Persona cliente : this.clientes) {
 
-        if (cliente.getNombre().trim().toLowerCase().equals(validarNombre)
+        String nombreCompleto = (cliente.getNombre() + " " + 
+                                cliente.getApellidoP() + " " +
+                                cliente.getApellidoM())
+                                .trim()
+                                .toLowerCase();
+
+        if (nombreCompleto.equals(validarNombre)
                 && cliente.getCelular().trim().equals(validarCelular)) {
 
             cliente.setSesionActiva(true);
-            System.out.println("Inicio de sesión correcto, bienvenido " + cliente.getNombre());
+            System.out.println("Inicio de sesion correcto, bienvenido " + cliente.getNombre());
             return cliente;
         }
     }
@@ -580,8 +614,6 @@ public Persona comprobarInicioSesion() {
     System.out.println("Usuario no encontrado.");
     return null;
 }
-
-
     
     public void mostrarCarteleraSucursal(String sucursalSeleccionada, Persona cliente) {
 
@@ -708,6 +740,30 @@ public Persona comprobarInicioSesion() {
             e.printStackTrace();
         }
     }
+    
+    public void actualizarDatosPersonales(Persona cliente) {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("---- ACTUALIZAR DATOS PERSONALES ----");
+
+    System.out.print("Nuevo nombre (actual: " + cliente.getNombre() + "): ");
+    String nuevoNombre = scanner.nextLine();
+    if (!nuevoNombre.trim().isEmpty()) cliente.setNombre(nuevoNombre);
+
+    System.out.print("Nuevo apellido paterno (actual: " + cliente.getAPaterno() + "): ");
+    String nuevoAP = scanner.nextLine();
+    if (!nuevoAP.trim().isEmpty()) cliente.setAPaterno(nuevoAP);
+
+    System.out.print("Nuevo correo (actual: " + cliente.getCorreo() + "): ");
+    String nuevoCorreo = scanner.nextLine();
+    if (!nuevoCorreo.trim().isEmpty()) cliente.setCorreo(nuevoCorreo);
+
+    System.out.print("Nuevo celular (actual: " + cliente.getCelular() + "): ");
+    String nuevoCelular = scanner.nextLine();
+    if (!nuevoCelular.trim().isEmpty()) cliente.setCelular(nuevoCelular);
+
+    System.out.println("Datos actualizados correctamente.\n");
+}
     
     private void actualizarCarteleras(){
         Scanner scanner = new Scanner(System.in);
