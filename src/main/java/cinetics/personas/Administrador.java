@@ -4,10 +4,6 @@
  */
 package cinetics.personas;
 
-/**
- *
- * @author ARKELOGIC
- */
 import java.util.*;
 public class Administrador {
     private String usuario = "administrador1234";

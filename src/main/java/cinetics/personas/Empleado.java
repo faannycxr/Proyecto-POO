@@ -4,10 +4,7 @@
  */
 package cinetics.personas;
 
-/**
- *
- * @author faann
- */
+
 public class Empleado extends Persona {
     
     private String numTrabajador = "";
@@ -45,11 +42,6 @@ public class Empleado extends Persona {
     
     public void atenderCliente(){
         System.out.println("Hola, soy " + this.getNombre() + " cual es su orden?");
-        
-        
-        
-        
-        
         
     }
 

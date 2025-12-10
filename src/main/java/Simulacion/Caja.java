@@ -4,10 +4,6 @@
  */
 package Simulacion;
 
-/**
- *
- * @author faann
- */
 import cinetics.sistema.Ticket;
 import java.util.*;
 

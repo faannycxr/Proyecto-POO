@@ -4,10 +4,7 @@
  */
 package cinetics.personas;
 
-/**
- *
- * @author faann
- */
+
 public class Gerente extends Empleado {
     
     public Gerente(String numTrabajador, String nombre, String aPaterno, String aMaterno, String direccion, String correo, String celular, String password, String noTarjeta, String RFC, String direccionFiscal, String tipoTrabajo, String sucursalTrabajo) {
