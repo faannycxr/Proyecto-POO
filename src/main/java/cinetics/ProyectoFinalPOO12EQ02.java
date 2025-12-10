@@ -1,4 +1,3 @@
-
 package cinetics;
 
 import cinetics.sistema.*;
@@ -7,20 +6,14 @@ import Simulacion.*;
 import java.io.*;
 import java.util.*;
 
-
-
 public class ProyectoFinalPOO12EQ02 {
 
-    /**
-     * @param args the command line arguments
-     */
-    
     private static final String CLIENTES_FILE = "src/main/java/cinetics/archivos/clientes/clientes.txt";
     private static final String EMPLEADOS_FILE = "src/main/java/cinetics/archivos/empleados.txt";
     private static final String GERENTES_FILE = "src/main/java/cinetics/archivos/gerentes.txt";
     private static final String FUNCIONES_FILE = "src/main/java/cinetics/archivos/funciones.txt";
     private static final String PRODUCTOS_FILE = "src/main/java/cinetics/archivos/productos.txt";
-    
+
     private int contTrabajadores = 1;
     private ArrayList<Sucursal> sucursales = new ArrayList<Sucursal>();
     private ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
@@ -32,103 +25,144 @@ public class ProyectoFinalPOO12EQ02 {
     private ArrayList<Map<String, Integer>> reporteProductos = new ArrayList<>();
     private ArrayList<Map<String, Integer>> reporteFunciones = new ArrayList<>();
     private ArrayList<Map<String, Integer>> reporteSucursales = new ArrayList<>();
-    
-    
-    
+
+
+
+    // ----------------------------
+    // MÉTODO NUEVO: LOGIN REAL
+    // ----------------------------
+    public Persona loginCliente() {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("\n--- INICIAR SESIÓN ---");
+        System.out.print("Correo o celular: ");
+        String user = sc.nextLine().trim();
+
+        System.out.print("Contraseña: ");
+        String pass = sc.nextLine().trim();
+
+        for (Persona c : this.clientes) {
+
+            boolean correoOK = c.getCorreo().trim().equalsIgnoreCase(user);
+            boolean celOK = c.getCelular().trim().equals(user);
+            boolean passOK = c.getPassword().trim().equals(pass);
+
+            if ((correoOK || celOK) && passOK) {
+                c.setSesionActiva(true);
+                System.out.println("\nInicio de sesión correcto, bienvenido " + c.getNombre());
+                return c;
+            }
+        }
+
+        System.out.println("Credenciales incorrectas.");
+        return null;
+    }
+
+
+
+    // -----------------------------------------
+    // INICIO DEL PROGRAMA
+    // -----------------------------------------
     public static void main(String[] args) {
-            System.out.println("***********************************************");
-            System.out.println("Proyecto final"); 
-            System.out.println("Programacion Orientada a objetos\n");
-            System.out.println("Grupo 12\nSemestre 2026-1");
-            System.out.println("Equipo 05 \n Nombre del equipo: Arkelogic ");
-            System.out.println("Integrantes:\nCabanzo Lopez Jose de Jesus.   322138915");
-            System.out.println("Desarrollo la estructura interna del sistema ");
-            System.out.println("Camacho Ramos Paola Estefany.   321222646"); //pongan sus numeros de cuenta, no los pide, pero siento que quedaria bn, o si no, avisenme para quitar el mio xd
-            System.out.println("Desarrollo la parte visual y de experencia de usuario ");
-            System.out.println("Cuevas Lopez Jose Roberto.   321147530");
-            System.out.println("Coordino la parte tcnica y calidad del sistema ");
-            System.out.println("Luis Ortiz Deborah Patricia.   423030200");
-            System.out.println("Definio y documento los requerimientos del cliente");
-            System.out.println("Vargas de la Cruz Alan.  322248537");    
-            System.out.println("Valido el funcionamiento y detecto errores del sistema"); 
-            System.out.println("***********************************************");
-      
-        
+
+        System.out.println("***********************************************");
+        System.out.println("Proyecto final"); 
+        System.out.println("Programacion Orientada a objetos\n");
+        System.out.println("Grupo 12\nSemestre 2026-1");
+        System.out.println("Equipo 05 \n Nombre del equipo: Arkelogic ");
+        System.out.println("Integrantes:\nCabanzo Lopez Jose de Jesus.   322138915");
+        System.out.println("Desarrollo la estructura interna del sistema ");
+        System.out.println("Camacho Ramos Paola Estefany.   321222646");
+        System.out.println("Desarrollo la parte visual y de experiencia de usuario ");
+        System.out.println("Cuevas Lopez Jose Roberto.   321147530");
+        System.out.println("Coordinó la parte técnica y calidad del sistema ");
+        System.out.println("Luis Ortiz Deborah Patricia.   423030200");
+        System.out.println("Definió y documentó los requerimientos del cliente");
+        System.out.println("Vargas de la Cruz Alan.  322248537");    
+        System.out.println("Validó el funcionamiento y detectó errores del sistema");
+        System.out.println("***********************************************");
+
         Scanner scanner = new Scanner(System.in);
         ProyectoFinalPOO12EQ02 main = new ProyectoFinalPOO12EQ02();
         Persona cliente = new Persona();
         Administrador admin = new Administrador();
         Simulacion simulacion = new Simulacion();
         Rob rob = new Rob();
-        
-        Thread hiloIniciarSucursales = new Thread(()->main.iniciarSucursales());
-        Thread hiloCargarUsuarios = new Thread(() ->main.cargarUsuarios());
+
+        // Hilos de carga
+        Thread hiloIniciarSucursales = new Thread(() -> main.iniciarSucursales());
+        Thread hiloCargarUsuarios = new Thread(() -> main.cargarUsuarios());
         Thread hiloCargarEmpleados = new Thread(() -> main.cargarEmpleados());
+        Thread hiloCargarGerentes = new Thread(() -> main.cargarGerentes());
         Thread hiloCargarFunciones = new Thread(() -> main.cargarFunciones());
         Thread hiloCargarProductos = new Thread(() -> main.cargarProductos());
-        Thread hiloCargarGerentes = new Thread(() -> main.cargarGerentes());
-        
-        int seleccion = 0;
-        String sucursalSeleccionada = "";
-        
+
         hiloIniciarSucursales.start();
         hiloCargarUsuarios.start();
         hiloCargarEmpleados.start();
         hiloCargarGerentes.start();
         hiloCargarFunciones.start();
         hiloCargarProductos.start();
-        
-        //main.seleccionarSucursal(cliente);
-        
-        //esperamos al hilo de las sucursales a que termine
-        try{
+
+        try {
             hiloIniciarSucursales.join();
             hiloCargarUsuarios.join();
             hiloCargarEmpleados.join();
             hiloCargarGerentes.join();
             hiloCargarFunciones.join();
             hiloCargarProductos.join();
-        }catch(InterruptedException e){
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
         main.seleccionarSucursal(cliente);
-        if(admin.validarSesion()){
-            while(true){
-                //simulacion del sistema de entrega de productos
-                while(true){
-            
-            String iniciarSimulacion;
-            System.out.println("Desea iniciar una simulacion del sistema? [S/N]");
-            iniciarSimulacion = scanner.nextLine().toLowerCase();
-            if(iniciarSimulacion.equals("s")){
-                
-                if(!simulacion.leerPeticiones(main.sucursales)){
-                    main.actualizarInventarios();
+
+
+        // --------------------------
+        // LOGIN ADMIN
+        // --------------------------
+        if (admin.validarSesion()) {
+
+            // Simulación de entrega de productos
+            while (true) {
+
+                System.out.println("¿Desea iniciar una simulación del sistema? [S/N]");
+                String iniciarSimulacion = scanner.nextLine().toLowerCase();
+
+                if (iniciarSimulacion.equals("s")) {
+
+                    if (!simulacion.leerPeticiones(main.sucursales)) {
+                        main.actualizarInventarios();
+                    }
+
+                } else {
+                    break;
                 }
-            
-            }else{
-                break;
             }
-            
+
+            main.menuAdministrador(admin, main, rob);
+            return;
         }
-                main.menuAdministrador(admin, main, rob);
-                return;
+
+
+
+        // --------------------------
+        // FLUJO PRINCIPAL DE CLIENTE
+        // --------------------------
+        while (true) {
+
+            if (!cliente.sesionActiva()) {
+
+                // menú sin cuenta
+                main.menuClienteSinCuenta(main, cliente, cliente.getSucursal(), rob);
+
+            } else {
+
+                // menú con cuenta
+                main.menuClienteCuenta(main, cliente, cliente.getSucursal(), rob);
             }
         }
-        
-        
-        
-        //menu del cliente
-        while(true){
-            if(cliente.sesionActiva()){
-                main.menuClienteCuenta(main, cliente, sucursalSeleccionada, rob);
-                return;
-            }else{
-                main.menuClienteSinCuenta(main, cliente, sucursalSeleccionada, rob);
-                return;
-            }
-        }
-        
     }
     
     public ArrayList<Pelicula> getPeliculas(){
@@ -221,15 +255,15 @@ public class ProyectoFinalPOO12EQ02 {
                             if(ayudaPelicula.equals("s")){
                                 rob.recomendarPelicula(main, cliente);
                             }
-                            continue;
+                            break;
                         case 2:
                             //agregar metodo para buscar pelicula
                             Pelicula peliculaABuscar = cliente.buscarPelicula(this.peliculas);
                             this.buscarPelicula(peliculaABuscar, cliente);
-                            continue;
+                            break;
                         case 3:
                             this.seleccionarSucursal(cliente);
-                            continue;
+                            break;
                         case 4:
                             //agregar metodo para buscar producto
                             System.out.println("Pedir ayuda a ROB? [S/N]");
@@ -239,7 +273,7 @@ public class ProyectoFinalPOO12EQ02 {
                             }else{
                                 this.buscarProducto(cliente.getSucursal(), cliente);
                             }
-                            continue;
+                            break;
                         case 5:
                             for(Sucursal s: this.sucursales){
                                 if(s.getNombre().equals(cliente.getSucursal())){
@@ -247,21 +281,21 @@ public class ProyectoFinalPOO12EQ02 {
                                     break;
                                 }
                             }
-                            continue;
+                            break;
                         case 6:
                             //agregar metodo para sobreescribir un cliente
-                            continue;
+                            break;
                         case 7:
                             this.registrarCliente(sucursalSeleccionada, cliente);
-                            continue;
+                            break;
                         case 8: 
                             //ver los puntos del cliente
                             cliente.verMisPuntos();
-                            continue;
+                            break;
                         case 9: 
                             //ver las compras del cliente
                             cliente.verMisCompras();
-                            continue;
+                            break;
                         case 10:
                             System.out.println("Saliendo del sistema");
                             return;
@@ -287,6 +321,7 @@ public class ProyectoFinalPOO12EQ02 {
                     System.out.println("1.Ver Cartelera\n2.Buscar Pelicula\n3.Cambiar sucursal\n" + 
                             "4.Iniciar sesion\n5.Buscar producto\n6.Ver Carrito\n"+
                             "7.Actualizar datos personales\n8.Registrarse\n9.Salir");
+                    System.out.println("Seleccione una opcion:");
                     seleccionUsuario = scanner.nextLine();
                     try{
                         selUsuarioInt = Integer.parseInt(seleccionUsuario);
@@ -318,25 +353,17 @@ public class ProyectoFinalPOO12EQ02 {
                         this.seleccionarSucursal(cliente);
                         continue;
                     case 4:
-                        Persona respaldoCliente = cliente;
-                        try {
-                            cliente = this.comprobarInicioSesion();
-                            
-                            if (cliente != null) {
-                                if(cliente.iniciarSesion()){
-                                    break;
-                                }
-                                
-                            } else {
-                                // Si el cliente es null
-                                cliente = respaldoCliente;
-                                continue;
-                            }
-                        } catch (Exception e) {
-                            // Si ocurre una excepción, mostramos el mensaje de error
-                            System.err.println("Ocurrió un error: " + e.getMessage());
-                            continue; // Continuamos con el flujo normal
-                        }
+                    Persona usuarioLogeado = this.loginCliente();
+
+                    if (usuarioLogeado != null) {
+                     cliente = usuarioLogeado;       // Cambiamos referencia
+                    System.out.println("Sesión iniciada correctamente.");
+                    return;                         // Regresamos al menú ya con sesión activa
+                     } else {
+                     System.out.println("No se pudo iniciar sesión.");
+                     }
+                     continue;
+                     
                     case 5:
                         //agregar metodo para buscar producto
                         System.out.println("Pedir ayuda a ROB? [S/N]");
@@ -529,7 +556,7 @@ public class ProyectoFinalPOO12EQ02 {
         System.out.println("****************************************************");
     }
     
-    public Persona comprobarInicioSesion() {
+public Persona comprobarInicioSesion() {
     Scanner scanner = new Scanner(System.in);
 
     System.out.println("Ingresa tus credenciales: ");
@@ -541,18 +568,19 @@ public class ProyectoFinalPOO12EQ02 {
 
     for (Persona cliente : this.clientes) {
 
-        String nombreBD = cliente.getNombre().trim().toLowerCase();
-        String celularBD = cliente.getCelular().trim();
+        if (cliente.getNombre().trim().toLowerCase().equals(validarNombre)
+                && cliente.getCelular().trim().equals(validarCelular)) {
 
-        //  Coincidencia exacta
-        if (nombreBD.equals(validarNombre) && celularBD.equals(validarCelular)) {
-            return cliente; //  Login exitoso
+            cliente.setSesionActiva(true);
+            System.out.println("Inicio de sesión correcto, bienvenido " + cliente.getNombre());
+            return cliente;
         }
     }
 
-    System.out.println("Usuario no encontrado. Verifique sus datos.");
+    System.out.println("Usuario no encontrado.");
     return null;
 }
+
 
     
     public void mostrarCarteleraSucursal(String sucursalSeleccionada, Persona cliente) {
@@ -873,8 +901,8 @@ public class ProyectoFinalPOO12EQ02 {
 
             // Validar que la contraseña tenga al menos 8 caracteres
             if (password.length() < 8) {
-                System.err.println("La contrasena debe tener al menos 8 caracteres. "
-                        + "Por favor, intentelo de nuevo.");
+                System.err.println("La contraseña debe tener al menos 8 caracteres. "
+                        + "Por favor, inténtelo de nuevo.");
                 System.out.print("Ingrese su contrasena: ");
                 password = scanner.nextLine();
                 continue; // Volver a solicitar la entrada
@@ -1085,7 +1113,7 @@ public class ProyectoFinalPOO12EQ02 {
             try{
                 // Validar que el celular tenga exactamente 10 dígitos
                 if (celular.length() != 10 || !celular.matches("\\d+")) {
-                    System.err.println("El numero de celular debe tener exactamente 10 dígitos. Por favor, intentelo de nuevo.");
+                    System.err.println("El número de celular debe tener exactamente 10 dígitos. Por favor, inténtelo de nuevo.");
                     System.out.print("Ingrese su celular (10 digitos)");
                     celular = scanner.nextLine();
                     continue; // Volver a solicitar la entrada
@@ -1106,7 +1134,7 @@ public class ProyectoFinalPOO12EQ02 {
 
             // Validar que la contraseña tenga al menos 8 caracteres
             if (password.length() < 8) {
-                System.err.println("La contrasena debe tener al menos 8 caracteres. Por favor, intentelo de nuevo.");
+                System.err.println("La contraseña debe tener al menos 8 caracteres. Por favor, inténtelo de nuevo.");
                 System.out.print("Ingrese su contrasena: ");
                 password = scanner.nextLine();
                 continue; // Volver a solicitar la entrada
@@ -1234,7 +1262,7 @@ public class ProyectoFinalPOO12EQ02 {
             try{
                 // Validar que el celular tenga exactamente 10 dígitos
                 if (celular.length() != 10 || !celular.matches("\\d+")) {
-                    System.err.println("El numero de celular debe tener exactamente 10 dígitos. Por favor, intentelo de nuevo.");
+                    System.err.println("El número de celular debe tener exactamente 10 dígitos. Por favor, inténtelo de nuevo.");
                     System.out.print("Ingrese su celular (10 digitos)");
                     celular = scanner.nextLine();
                     continue; // Volver a solicitar la entrada
@@ -1255,7 +1283,7 @@ public class ProyectoFinalPOO12EQ02 {
 
             // Validar que la contraseña tenga al menos 8 caracteres
             if (password.length() < 8) {
-                System.err.println("La contrasena debe tener al menos 8 caracteres. Por favor, intentelo de nuevo.");
+                System.err.println("La contraseña debe tener al menos 8 caracteres. Por favor, inténtelo de nuevo.");
                 System.out.print("Ingrese su contrasena: ");
                 password = scanner.nextLine();
                 continue; // Volver a solicitar la entrada
