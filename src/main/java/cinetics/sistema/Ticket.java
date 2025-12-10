@@ -4,10 +4,6 @@
  */
 package cinetics.sistema;
 
-/**
- *
- * @author faann
- */
 import java.util.*;
 import java.io.*;
 

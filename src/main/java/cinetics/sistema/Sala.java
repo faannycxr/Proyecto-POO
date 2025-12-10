@@ -4,10 +4,7 @@
  */
 package cinetics.sistema;
 
-/**
- *
- * @author faann
- */
+
 public class Sala {
     private int lugares = 0;
     private String nombre = "";

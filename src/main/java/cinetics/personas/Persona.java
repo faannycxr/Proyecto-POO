@@ -5,10 +5,6 @@ import java.util.*;
 
 public class Persona {
 
-    //----------------------------------------------------
-    // ATRIBUTOS
-    //----------------------------------------------------
-    
     private String nombre = "";
     private String apellidoPaterno = "";
     private String apellidoMaterno = "";
@@ -30,55 +26,89 @@ public class Persona {
     private ArrayList<Ticket> misCompras = new ArrayList<>();
     private Carrito carrito = new Carrito();
 
+    public void setNombre(String n) { 
+        this.nombre = n; 
+    }
+    public void setAPaterno(String p) { 
+        this.apellidoPaterno = p; 
+    }
+    public void setAMaterno(String m) { 
+        this.apellidoMaterno = m;
+    }
+    public void setDireccion(String d) { 
+        this.direccion = d; 
+    }
+    public void setCorreo(String c) { 
+        this.correo = c; 
+    }
+    public void setCelular(String cel) { 
+        this.celular = cel; 
+    }
+    public void setPassword(String pwd) { 
+        this.password = pwd; 
+    }
+    public void setNoTarjeta(String t) { 
+        this.noTarjeta = t; 
+    }
+    public void setRFC(String r) { 
+        this.RFC = r; 
+    }
+    public void setDireccionFiscal(String df) { 
+        this.direccionFiscal = df; 
+    }
+    public void setSucursal(String suc) { 
+        this.sucursalSeleccionada = suc; 
+    }
+    public void setSesionActiva(boolean estado) { 
+        this.inicioSesion = estado; 
+    }
 
+    public String getNombre() { 
+        return this.nombre; 
+    }
+    public String getAPaterno() { 
+        return this.apellidoPaterno; 
+    }
+    public String getAMaterno() { 
+        return this.apellidoMaterno; 
+    }
 
-    //----------------------------------------------------
-    // SETTERS
-    //----------------------------------------------------
+    public String getApellidoP() { 
+        return this.apellidoPaterno; 
+    }
+    public String getApellidoM() { 
+        return this.apellidoMaterno; 
+    }
 
-    public void setNombre(String n) { this.nombre = n; }
-    public void setAPaterno(String p) { this.apellidoPaterno = p; }
-    public void setAMaterno(String m) { this.apellidoMaterno = m; }
-    public void setDireccion(String d) { this.direccion = d; }
-    public void setCorreo(String c) { this.correo = c; }
-    public void setCelular(String cel) { this.celular = cel; }
-    public void setPassword(String pwd) { this.password = pwd; }
-    public void setNoTarjeta(String t) { this.noTarjeta = t; }
-    public void setRFC(String r) { this.RFC = r; }
-    public void setDireccionFiscal(String df) { this.direccionFiscal = df; }
-    public void setSucursal(String suc) { this.sucursalSeleccionada = suc; }
-    public void setSesionActiva(boolean estado) { this.inicioSesion = estado; }
+    public String getCorreo() { 
+        return this.correo; 
+    }
+    public String getCelular() { 
+        return this.celular; 
+    }
+    public String getPassword() { 
+        return this.password; 
+    }
+    public String getNoTarjeta() { 
+        return this.noTarjeta; 
+    }
+    public String getRFC() { 
+        return this.RFC; 
+    }
+    public String getDireccionFiscal() { 
+        return this.direccionFiscal; 
+    }
+    public String getSucursal() { 
+        return this.sucursalSeleccionada; 
+    }
+    public Carrito getCarrito() { 
+        return this.carrito; 
+    }
 
-
-
-    //----------------------------------------------------
-    // GETTERS
-    //----------------------------------------------------
-
-    public String getNombre() { return this.nombre; }
-    public String getAPaterno() { return this.apellidoPaterno; }
-    public String getAMaterno() { return this.apellidoMaterno; }
-
-    // Compatibilidad con metodos usados en otras clases
-    public String getApellidoP() { return this.apellidoPaterno; }
-    public String getApellidoM() { return this.apellidoMaterno; }
-
-    public String getCorreo() { return this.correo; }
-    public String getCelular() { return this.celular; }
-    public String getPassword() { return this.password; }
-    public String getNoTarjeta() { return this.noTarjeta; }
-    public String getRFC() { return this.RFC; }
-    public String getDireccionFiscal() { return this.direccionFiscal; }
-    public String getSucursal() { return this.sucursalSeleccionada; }
-    public Carrito getCarrito() { return this.carrito; }
-
-    public boolean sesionActiva() { return this.inicioSesion; }
-
-
-
-    //----------------------------------------------------
-    // INICIO DE SESION (compatible con tu main)
-    //----------------------------------------------------
+    public boolean sesionActiva() { 
+        
+        return this.inicioSesion; 
+    }
 
     public boolean iniciarSesion() {
 
@@ -107,10 +137,6 @@ public class Persona {
 
 
 
-    //----------------------------------------------------
-    // BUSCAR PELICULA (lo usa Rob y tu main)
-    //----------------------------------------------------
-
     public Pelicula buscarPelicula(ArrayList<Pelicula> lista) {
 
         Scanner sc = new Scanner(System.in);
@@ -138,12 +164,6 @@ public class Persona {
             }
         }
     }
-
-
-
-    //----------------------------------------------------
-    // PROGRAMA DE PUNTOS
-    //----------------------------------------------------
 
     public void verMisPuntos() {
         System.out.println("Puntos actuales: " + this.misPuntos);
@@ -176,12 +196,6 @@ public class Persona {
         return 0.16;
     }
 
-
-
-    //----------------------------------------------------
-    // TICKETS Y COMPRAS
-    //----------------------------------------------------
-
     public int realizarCompra() {
 
         if (!inicioSesion) {
@@ -207,11 +221,6 @@ public class Persona {
         return nuevo;
     }
 
-
-    //----------------------------------------------------
-    // VISUALIZAR COMPRAS
-    //----------------------------------------------------
-
     public void verMisCompras() {
 
         if (!inicioSesion) {
@@ -224,11 +233,6 @@ public class Persona {
         }
     }
 
-
-
-    //----------------------------------------------------
-    // CARRITO
-    //----------------------------------------------------
 
     public void verCarrito(Sucursal sucursal, Persona cliente) {
         this.carrito.verCarrito(sucursal, cliente);

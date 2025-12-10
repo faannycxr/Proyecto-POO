@@ -4,10 +4,7 @@
  */
 package cinetics.sistema;
 
-/**
- *
- * @author faann
- */
+
 public class Producto {
     private String nombre = "";
     private String codigo = "";

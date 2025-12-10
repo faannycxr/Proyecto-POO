@@ -4,10 +4,7 @@
  */
 package Simulacion;
 
-/**
- *
- * @author faann
- */
+
 /*
 Clase para la simulación del proceso de recoger ordenes en el sistema.
 Todas las ordenes y clientes serán leidos de un archivo destinado y preparado para la simulación.

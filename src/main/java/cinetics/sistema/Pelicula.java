@@ -4,10 +4,7 @@
  */
 package cinetics.sistema;
 
-/**
- *
- * @author faann
- */
+
 import java.util.*;
 
 public class Pelicula {

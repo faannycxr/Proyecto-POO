@@ -6,10 +6,7 @@ package cinetics.sistema;
 import cinetics.ProyectoFinalPOO12EQ02;
 import cinetics.personas.Persona;
 import java.util.Scanner;
-/**
- *
- * @author faann
- */
+
 public class Rob {
     public void ayudarCompra(ProyectoFinalPOO12EQ02 main, Persona cliente){
         Scanner scanner = new Scanner(System.in);

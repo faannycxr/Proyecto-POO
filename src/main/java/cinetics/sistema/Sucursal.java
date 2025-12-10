@@ -4,10 +4,6 @@
  */
 package cinetics.sistema;
 
-/**
- *
- * @author faann
- */
 import cinetics.personas.*;
 import cinetics.sistema.Caja;
 

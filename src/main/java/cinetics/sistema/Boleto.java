@@ -4,10 +4,6 @@
  */
 package cinetics.sistema;
 
-/**
- *
- * @author faann
- */
 public class Boleto {
     private String sala = "";
     private String hora = "";

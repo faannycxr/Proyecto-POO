@@ -28,9 +28,7 @@ public class ProyectoFinalPOO12EQ02 {
 
 
 
-    // ----------------------------
-    // MÉTODO NUEVO: LOGIN REAL
-    // ----------------------------
+
     public Persona loginCliente() {
 
         Scanner sc = new Scanner(System.in);
@@ -113,7 +111,7 @@ public class ProyectoFinalPOO12EQ02 {
 
         main.seleccionarSucursal(cliente);
 
-        // LOGIN ADMIN
+
         if (admin.validarSesion()) {
 
         // mostrar menu del administrador
@@ -121,9 +119,7 @@ public class ProyectoFinalPOO12EQ02 {
         return;
     }
 
-        // -----------------------------------
-        // FLUJO PRINCIPAL DE CLIENTE
-        // -----------------------------------
+        
         while (true) {
 
         if (!cliente.sesionActiva()) {
@@ -320,7 +316,7 @@ public class ProyectoFinalPOO12EQ02 {
                 Persona usuarioLogeado = this.loginCliente();
 
                 if(usuarioLogeado != null){
-                    // sustituimos clienteActual por usuario real
+                   
                     clienteActual.setNombre(usuarioLogeado.getNombre());
                     clienteActual.setAPaterno(usuarioLogeado.getAPaterno());
                     clienteActual.setAMaterno(usuarioLogeado.getAMaterno());
@@ -332,7 +328,7 @@ public class ProyectoFinalPOO12EQ02 {
 
                     System.out.println("Sesion iniciada correctamente.");
 
-                    return; // volvemos al while principal
+                    return; 
                 }
 
                 System.out.println("No se pudo iniciar sesion.");
@@ -898,7 +894,7 @@ public Persona comprobarInicioSesion() {
     }
     
     public void registrarCliente(String sucursalSeleccionada, Persona cliente) {
-        // Abrir el archivo de los clientes para registrar uno nuevo
+        
         Scanner scanner = new Scanner(System.in);
         this.mostrarHeader(sucursalSeleccionada);
 
